@@ -1,0 +1,311 @@
+{
+                        expanded: false,
+                        children: [
+                            {
+                                text: '原盤印税',
+                                id: 'm1',
+                                expanded: false,
+                                children: [
+                                    {
+                                text: '印税カードメンテナンス',
+                                id: 'm1_1',
+                                expanded: false,
+                                children: [
+                                    {
+                                        text: '印税カード一括登録',
+                                        id: 'm1_1_1',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: '印税カード照会',
+                                        id: 'm1_1_2',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: '印税カード更新',
+                                        id: 'm1_1_3',
+                                        leaf: true
+                                    }									
+                                ]
+                               },
+                                    {
+                                text: 'マスターメンテナンス',
+                                id: 'm1_2',
+                                expanded: false,
+                                children: [
+                                    {
+                                        text: '印税取引先マスター',
+                                        id: 'm1_2_1',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: 'グループマスター',
+                                        id: 'm1_2_2',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: 'スライドグループマスター',
+                                        id: 'm1_2_3',
+                                        leaf: true
+                                    }									
+                                ]
+                               },
+                                    {
+                                text: 'データメンテナンス',
+                                id: 'm1_3',
+                                expanded: false,
+                                children: [
+                                    {
+                                        text: 'ＰＰＴデータ入力',
+                                        id: 'm1_3_1',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: '伝票訂正データ入力',
+                                        id: 'm1_3_2',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: '前払データ入力',
+                                        id: 'm1_3_3',
+                                        leaf: true
+                                    }									
+                                ]
+                               },
+                                    {
+                                text: '印税計算',
+                                id: 'm1_4',
+                                expanded: false,
+                                children: [
+                                    {
+                                        text: '印税計算処理（月次?四半期）',
+                                        id: 'm1_4_1',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: '印税計算処理（締月）',
+                                        id: 'm1_4_2',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: '印税計算処理（仮登録締）',
+                                        id: 'm1_4_3',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: '月次更新処理',
+                                        id: 'm1_4_4',
+                                        leaf: true
+                                    }										
+                                ]
+                               },
+                                    {
+                                text: 'データ照会',
+                                id: 'm1_5',
+                                expanded: false,
+                                children: [
+                                    {
+                                        text: '未払印税データ照会',
+                                        id: 'm1_5_1',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: '前払取崩データ照会',
+                                        id: 'm1_5_2',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: '印税計算データ照会',
+                                        id: 'm1_5_3',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: '印税累計実績照会',
+                                        id: 'm1_5_4',
+                                        leaf: true
+                                    }									
+                                ]
+                               },
+                                    {
+                                text: '帳票出力',
+                                id: 'm1_6',
+                                expanded: false,
+                                children: [
+                                    {
+                                        text: '印税計算書印刷',
+                                        id: 'm1_6_1',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: '印税集計表印刷',
+                                        id: 'm1_6_2',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: '期限日確認リスト印刷',
+                                        id: 'm1_6_3',
+                                        leaf: true
+                                    }									
+                                ]
+                               },
+                                    {
+                                text: '支払',
+                                id: 'm1_7',
+                                expanded: false,
+                                children: [
+                                    {
+                                        text: '支払データ訂正',
+                                        id: 'm1_7_1',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: '支払データ会計取込',
+                                        id: 'm1_7_2',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: '印税支払照会',
+                                        id: 'm1_7_3',
+                                        leaf: true
+                                    }									
+                                ]
+                               },
+                                    {
+                                text: '生産基準印税拾上',
+                                id: 'm1_8',
+                                expanded: false,
+                                children: [                                    
+                                    {
+                                        text: '生産基準印税拾上データメンテナンス',
+                                        id: 'm1_8_1',
+                                        leaf: true
+                                    }									
+                                ]
+                               }
+                                ]
+                            },
+                            {
+                                text: '音楽原盤印税',
+                                id: 'm2',
+                                expanded: false,
+                                children: [
+                                    {
+                                text: '楽曲登録.照会',
+                                id: 'm2_1',
+                                expanded: false,
+                                children: [
+                                    {
+                                        text: 'グループメンテナンス',
+                                        id: 'm2_1_1',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: '楽曲詳細情報登録',
+                                        id: 'm2_1_2',
+                                        leaf: true
+                                    }								
+                                ]
+                               },
+                                    {
+                                text: ' レーベルコピー登録.照会',
+                                id: 'm2_2',
+                                expanded: false,
+                                children: [
+                                    {
+                                        text: ' レーベルコピー登録.照会',
+                                        id: 'm2_2_1',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: '歌詞登録.照会',
+                                        id: 'm2_2_2',
+                                        leaf: true
+                                    }								
+                                ]
+                               },{
+                                text: '契約情報登録.照会',
+                                id: 'm2_3',
+                                expanded: false,
+                                children: [
+                                    {
+                                        text: '契約情報詳細',
+                                        id: 'm2_3_1',
+                                        leaf: true
+                                    }							
+                                ]
+                               },
+                                {
+                                        text: '変更履歴',
+                                        id: 'm2_4',
+                                        leaf: true
+                                    }							
+                                
+                                ]
+                            },{
+                                text: 'ノンパッケージ売上管理',
+                                id: 'm3',
+                                expanded: true,
+                                children: [
+                                    {
+                                text: '映画売上管理',
+                                id: 'm3_1',
+                                expanded: true,
+                                children: [
+                                    {
+                                        text: '権利販売メンテナンス',
+                                        id: 'm3_1_1',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: '販売先メンテ',
+                                        id: 'm3_1_2',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: 'ライセンサーメンテ',
+                                        id: 'm3_1_3',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: '権利売上照会',
+                                        id: 'm3_1_4',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: '権利入金照会',
+                                        id: 'm3_1_5',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: '権利経費照会',
+                                        id: 'm3_1_6',
+                                        leaf: true
+                                    }									
+                                ]
+                               },
+                                    {
+                                text: 'クロメ&音楽',
+                                id: 'm3_2',
+                                expanded: true,
+                                children: [
+                                    {
+                                        text: '権利販売メンテナンス',
+                                        id: 'm3_2_1',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: '販売先メンテ',
+                                        id: 'm3_2_2',
+                                        leaf: true
+                                    },
+                                    {
+                                        text: '権利売上照会',
+                                        id: 'm3_2_2',
+                                        leaf: true
+                                    }							
+                                ]
+                               }								
+                                ]
+                               }
+                        ]
+}

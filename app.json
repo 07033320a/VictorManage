@@ -1,0 +1,15 @@
+{
+   "name": "MyApp",
+   "requires": [],
+   "id": "2714c88f-6088-4af7-a89a-751f782f76b3",
+   "resources": [
+      "ItemSelector.css"
+   ],
+   "_architect": {
+      "_comment": "Please don't edit. This is Architect data.",
+      "resources": [
+         "ItemSelector.css"
+      ],
+      "requires": []
+   }
+}
