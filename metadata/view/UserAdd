@@ -1,0 +1,188 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "height": 340,
+        "width": 448,
+        "designer|userClassName": "UserAdd",
+        "designer|userAlias": "useradd",
+        "resizable": false,
+        "layout": "fit",
+        "title": "新增用户",
+        "modal": true
+    },
+    "configAlternates": {
+        "resizable": "boolean"
+    },
+    "designerId": "f757834f-a571-4b4d-b3fc-ed2d9220e3e4",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bodyPadding": 10,
+                "title": ""
+            },
+            "designerId": "c7a94e7e-34a6-42bf-bb59-0c7033a82f04",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "登录名",
+                        "name": "username"
+                    },
+                    "designerId": "b3379872-b149-4e5f-9dbb-9a6da7d394bf"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "密码",
+                        "name": "password"
+                    },
+                    "designerId": "12d8f13f-edba-43db-af84-8a858b14fbdb"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "真实姓名",
+                        "name": "cnName"
+                    },
+                    "designerId": "2cb4e771-ac4f-4885-a5a0-710a759928d6"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "邮箱",
+                        "name": "email",
+                        "vtype": "email"
+                    },
+                    "designerId": "1a4bc3dd-c2f9-41d8-912d-8cdf7d1b57f2"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "电话",
+                        "name": "mobilephone"
+                    },
+                    "designerId": "deb7eb6c-1940-4b20-be69-366ee9ae4fdb"
+                },
+                {
+                    "type": "Ext.form.field.File",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "头像",
+                        "name": "picUrl"
+                    },
+                    "designerId": "238b22ce-bae8-4eed-8579-4fe98030d063"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "icon": "data/img/save.gif",
+                        "scale": null,
+                        "text": "确认"
+                    },
+                    "designerId": "d1167384-4808-43e9-88bd-b1ad9c99e301",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onButtonClick",
+                                "implHandler": [
+                                    "var form = this.down('form').getForm();\r",
+                                    "var values = form.getValues();\r",
+                                    "form.submit({\r",
+                                    "    url:\"/Home/UserAdd\",\r",
+                                    "    params: values,\r",
+                                    "    method:'POST',\r",
+                                    "    scope: this,\r",
+                                    "    success:function(f,action) {\r",
+                                    "        Ext.Msg.alert('提示:','成功');\r",
+                                    "        this.close();\r",
+                                    "        Ext.ComponentQuery.query('userlist grid')[0].getStore().load();\r",
+                                    "    },\r",
+                                    "    failure:function(f,action){\r",
+                                    "        Ext.Msg.alert(f,action);\r",
+                                    "    }\r",
+                                    "});\r",
+                                    ""
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "designerId": "128bc81a-a36c-4ab9-8026-47b3251c6e52"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "margin": "0 0 0 20",
+                        "icon": "data/img/reset.gif",
+                        "scale": null,
+                        "text": "重置"
+                    },
+                    "designerId": "a7df78d5-0b09-4a92-a3c4-5a5eaac00a7e"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MenuModel"
+    },
+    "designerId": "2e3fea0f-a577-4325-aabd-0bba752f06a7"
+}

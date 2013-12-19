@@ -1,0 +1,377 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "height": 372,
+        "id": null,
+        "itemId": null,
+        "margin": null,
+        "width": 624,
+        "designer|userClassName": "RecShop",
+        "designer|userAlias": "recshop",
+        "layout": "fit",
+        "title": "推荐商铺管理"
+    },
+    "designerId": "fae446fd-9117-4787-8c65-cf75911bd7ac",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "height": null,
+                "id": null,
+                "itemId": null,
+                "layout": "column",
+                "bodyPadding": 10,
+                "title": "检索条件"
+            },
+            "designerId": "371da560-8097-489c-beb1-6ee803e36cd6",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": null,
+                        "itemId": null,
+                        "margin": "0 10 10 0",
+                        "fieldLabel": "商铺名称",
+                        "labelAlign": "right",
+                        "name": "shopName"
+                    },
+                    "designerId": "de980d61-9bbc-454c-b4e0-8a9815b16580"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": null,
+                        "itemId": null,
+                        "margin": "0 10 10 0",
+                        "fieldLabel": "用户名",
+                        "labelAlign": "right",
+                        "name": "userId"
+                    },
+                    "designerId": "4a39624d-3963-452f-9a2f-9436b3abbb9c"
+                },
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "margin": "0 0 0 30",
+                        "layout": "table"
+                    },
+                    "designerId": "f48928b3-28d1-4579-81af-abf1a8b5efad",
+                    "cn": [
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "id": null,
+                                "itemId": null,
+                                "margin": "0 10 10 30",
+                                "icon": "data/img/zoom.gif",
+                                "text": "查询"
+                            },
+                            "designerId": "3bed8da1-b70a-4dea-b75c-b73ca905d575",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onSearchBtnClick",
+                                        "implHandler": [
+                                            "var values = this.down('form').getForm().getValues();\r",
+                                            "var store = this.down('grid').getStore();\r",
+                                            "store.getProxy().extraParams = values;\r",
+                                            "store.load({\r",
+                                            "    callback:function(r, option, success){\r",
+                                            "        if(success){\r",
+                                            "\r",
+                                            "        }else{\r",
+                                            "            Ext.Msg.alert('错误',option.getError().statusText);\r",
+                                            "        }\r",
+                                            "\r",
+                                            "    }});"
+                                        ],
+                                        "name": "click",
+                                        "scope": "me"
+                                    },
+                                    "designerId": "a7f7645e-ad50-4e94-8c25-cfcdc7b9ea02"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "id": null,
+                                "itemId": null,
+                                "margin": "0 10 10 30",
+                                "icon": "data/img/reset.gif",
+                                "text": "重置"
+                            },
+                            "designerId": "7e8f0edc-4884-4e13-b7b2-cb0fd8e3b567",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "handler",
+                                        "designer|params": [
+                                            "button",
+                                            "event"
+                                        ],
+                                        "implHandler": [
+                                            "this.up('form').getForm().reset();"
+                                        ]
+                                    },
+                                    "designerId": "b8a193ed-15cd-4362-8acd-417b2ae1020b"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout": "border"
+            },
+            "designerId": "c462c115-d7f5-432f-a3e8-db28f25733af",
+            "cn": [
+                {
+                    "type": "Ext.grid.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 1,
+                        "layout|region": "center",
+                        "id": null,
+                        "itemId": null,
+                        "title": "",
+                        "store": "RecShopStore"
+                    },
+                    "designerId": "66b98150-b55b-4a2d-bd48-922401d60829",
+                    "cn": [
+                        {
+                            "type": "Ext.grid.View",
+                            "reference": {
+                                "name": "viewConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": null
+                            },
+                            "designerId": "05b62d66-2ed2-48e4-ab55-73c3d735c4a8"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "hidden": true,
+                                "dataIndex": "shopId",
+                                "text": "ShopId"
+                            },
+                            "designerId": "8f5a661c-09e5-4516-bb91-9e1917a5df08"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": 134,
+                                "dataIndex": "shopName",
+                                "text": "商铺名称"
+                            },
+                            "designerId": "62503bbb-c13d-42cc-8045-cabb7028cbff"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": 216,
+                                "dataIndex": "introduction",
+                                "text": "商铺介绍"
+                            },
+                            "designerId": "63a4d035-14b6-45e2-b60d-874df770017a"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": 129,
+                                "dataIndex": "picurl",
+                                "text": "商铺图片"
+                            },
+                            "designerId": "b7d1376a-3d5a-4440-98b1-b5eee98b9ff5"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "attention",
+                                "text": "关注度"
+                            },
+                            "designerId": "84cf1e0f-2d29-494e-8052-8649143d3c8b"
+                        },
+                        {
+                            "type": "Ext.grid.column.Action",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": 46
+                            },
+                            "designerId": "388a76f8-66ab-48d2-85ff-f8ec8abd5384",
+                            "cn": [
+                                {
+                                    "type": "actioncolumnitem",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "icon": "data/img/delete2.gif"
+                                    },
+                                    "designerId": "411504c9-9151-48e7-b012-0b6414494c34"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|region": "north",
+                        "height": null
+                    },
+                    "designerId": "9248de4e-593c-4b6b-85fa-911126efe80d",
+                    "cn": [
+                        {
+                            "type": "Ext.form.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "padding": "0 0 0 5",
+                                "text": "推荐商铺"
+                            },
+                            "designerId": "91314529-e15e-4462-affd-0b0af3588bd7"
+                        },
+                        {
+                            "type": "Ext.resizer.Splitter",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null
+                            },
+                            "designerId": "90935ba4-61bd-4f35-bee9-b0b64fdddfe5"
+                        },
+                        {
+                            "type": "Ext.form.field.ComboBox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "width": 300,
+                                "fieldLabel": "添加",
+                                "labelAlign": "right",
+                                "labelWidth": 90,
+                                "emptyText": "          < - - 请选择 - - >",
+                                "displayField": "Text",
+                                "pageSize": 10,
+                                "store": "RecShopAddListStore",
+                                "valueField": "Value",
+                                "valueNotFoundText": "未找到值"
+                            },
+                            "designerId": "3ba8a6d3-388d-4ab7-8d98-cfbe771a3abc"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
