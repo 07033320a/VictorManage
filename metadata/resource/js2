@@ -1,0 +1,13 @@
+{
+    "type": "jsresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "js2",
+        "url": "MultiSelect.js"
+    },
+    "designerId": "009e58fc-4c32-4dae-9130-4780b5cdd9ec"
+}

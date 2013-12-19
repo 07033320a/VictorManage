@@ -1,0 +1,223 @@
+{
+    "name": "VictorManage",
+    "settings": {
+        "urlPrefix": "http://localhost/",
+        "exportPath": "F:/iis/VictorManage",
+        "spacesToIndent": 4,
+        "lineEnding": "CRLF",
+        "genTimestamps": false,
+        "cacheBust": false,
+        "buildShouldOverwriteIndex": true
+    },
+    "xdsVersion": "2.2.3",
+    "xdsBuild": 1044,
+    "schemaVersion": 1,
+    "upgradeVersion": 210000000503,
+    "framework": "ext42",
+    "topInstanceFileMap": {
+        "9578b511-06c1-4e29-8e3e-b9d03e11f008": {
+            "paths": [
+                "metadata/resource/Library"
+            ],
+            "className": "Library"
+        },
+        "68902d2d-1603-42d0-a380-5dd2e7f463ea": {
+            "paths": [
+                "metadata/view/MyViewport",
+                "app/view/override/MyViewport.js",
+                "app/view/MyViewport.js",
+                "app/view/Viewport.js"
+            ],
+            "className": "MyViewport"
+        },
+        "2e3fea0f-a577-4325-aabd-0bba752f06a7": {
+            "paths": [
+                "metadata/model/MenuModel",
+                "app/model/override/MenuModel.js",
+                "app/model/MenuModel.js"
+            ],
+            "className": "MenuModel"
+        },
+        "a7f66410-b969-46b4-bec9-f5f246aaaa0c": {
+            "paths": [
+                "metadata/view/HomePanel",
+                "app/view/override/HomePanel.js",
+                "app/view/HomePanel.js"
+            ],
+            "className": "HomePanel"
+        },
+        "3676a44f-ac77-40b1-bdb9-579faffd8a41": {
+            "paths": [
+                "metadata/controller/FrameController",
+                "app/controller/override/FrameController.js",
+                "app/controller/FrameController.js"
+            ],
+            "className": "FrameController"
+        },
+        "bf6e2c3f-ff44-4374-83ce-f5173f4407db": {
+            "paths": [
+                "metadata/view/UserManagement",
+                "app/view/override/UserManagement.js",
+                "app/view/UserManagement.js"
+            ],
+            "className": "UserManagement"
+        },
+        "f700909a-3b45-4309-ba8c-8c4ce3efe64c": {
+            "paths": [
+                "metadata/store/UserListStore",
+                "app/store/override/UserListStore.js",
+                "app/store/UserListStore.js"
+            ],
+            "className": "UserListStore"
+        },
+        "4ad88e0d-34f0-40ca-9d81-5e9a97e8d615": {
+            "paths": [
+                "metadata/model/UserListModel",
+                "app/model/override/UserListModel.js",
+                "app/model/UserListModel.js"
+            ],
+            "className": "UserListModel"
+        },
+        "009e58fc-4c32-4dae-9130-4780b5cdd9ec": {
+            "paths": [
+                "metadata/resource/js2"
+            ],
+            "className": "js2"
+        },
+        "0a4e55c4-0f03-4c0c-899d-a67ce69bce38": {
+            "paths": [
+                "metadata/resource/js1"
+            ],
+            "className": "js1"
+        },
+        "6469e853-99b9-4ec2-9df2-45b8db45ae16": {
+            "paths": [
+                "metadata/resource/css"
+            ],
+            "className": "css"
+        },
+        "54f8323c-204c-4343-8b76-a919c17f2363": {
+            "paths": [
+                "metadata/controller/UserController",
+                "app/controller/override/UserController.js",
+                "app/controller/UserController.js"
+            ],
+            "className": "UserController"
+        },
+        "2621b356-20b6-4ea0-b05c-8c22faa40f77": {
+            "paths": [
+                "metadata/resource/js3"
+            ],
+            "className": "js3"
+        },
+        "f757834f-a571-4b4d-b3fc-ed2d9220e3e4": {
+            "paths": [
+                "metadata/view/UserAdd",
+                "app/view/override/UserAdd.js",
+                "app/view/UserAdd.js"
+            ],
+            "className": "UserAdd"
+        },
+        "714701bb-b1de-485d-b72c-3e848e1d4a90": {
+            "paths": [
+                "metadata/view/ShopManagement",
+                "app/view/override/ShopManagement.js",
+                "app/view/ShopManagement.js"
+            ],
+            "className": "ShopManagement"
+        },
+        "c489892b-b282-42ed-874f-c70133345847": {
+            "paths": [
+                "metadata/store/ShopListStore",
+                "app/store/override/ShopListStore.js",
+                "app/store/ShopListStore.js"
+            ],
+            "className": "ShopListStore"
+        },
+        "b827f1e1-590b-4f48-b10e-ca1767d1559f": {
+            "paths": [
+                "metadata/controller/ShopController",
+                "app/controller/override/ShopController.js",
+                "app/controller/ShopController.js"
+            ],
+            "className": "ShopController"
+        },
+        "f86fff54-60ce-4ef1-81a1-073b9b32d4b5": {
+            "paths": [
+                "metadata/view/ShopAdd",
+                "app/view/override/ShopAdd.js",
+                "app/view/ShopAdd.js"
+            ],
+            "className": "ShopAdd"
+        },
+        "fae446fd-9117-4787-8c65-cf75911bd7ac": {
+            "paths": [
+                "metadata/view/RecShop",
+                "app/view/override/RecShop.js",
+                "app/view/RecShop.js"
+            ],
+            "className": "RecShop"
+        },
+        "03099c7c-a70d-4eae-84a3-bd9383b9076c": {
+            "paths": [
+                "metadata/store/RecShopStore",
+                "app/store/override/RecShopStore.js",
+                "app/store/RecShopStore.js"
+            ],
+            "className": "RecShopStore"
+        },
+        "3c191be9-01c4-46d6-9f3a-4eb0c80551fb": {
+            "paths": [
+                "metadata/store/RecShopAddListStore",
+                "app/store/override/RecShopAddListStore.js",
+                "app/store/RecShopAddListStore.js"
+            ],
+            "className": "RecShopAddListStore"
+        },
+        "4dfd32cf-8b6a-43b7-8163-41ae53a7b182": {
+            "paths": [
+                "metadata/store/TypeStore",
+                "app/store/override/TypeStore.js",
+                "app/store/TypeStore.js"
+            ],
+            "className": "TypeStore"
+        }
+    },
+    "viewOrderMap": {
+        "view": [
+            "68902d2d-1603-42d0-a380-5dd2e7f463ea",
+            "a7f66410-b969-46b4-bec9-f5f246aaaa0c",
+            "bf6e2c3f-ff44-4374-83ce-f5173f4407db",
+            "714701bb-b1de-485d-b72c-3e848e1d4a90",
+            "fae446fd-9117-4787-8c65-cf75911bd7ac",
+            "f757834f-a571-4b4d-b3fc-ed2d9220e3e4",
+            "f86fff54-60ce-4ef1-81a1-073b9b32d4b5"
+        ],
+        "store": [
+            "f700909a-3b45-4309-ba8c-8c4ce3efe64c",
+            "4dfd32cf-8b6a-43b7-8163-41ae53a7b182",
+            "c489892b-b282-42ed-874f-c70133345847",
+            "03099c7c-a70d-4eae-84a3-bd9383b9076c",
+            "3c191be9-01c4-46d6-9f3a-4eb0c80551fb"
+        ],
+        "controller": [
+            "3676a44f-ac77-40b1-bdb9-579faffd8a41",
+            "54f8323c-204c-4343-8b76-a919c17f2363",
+            "b827f1e1-590b-4f48-b10e-ca1767d1559f"
+        ],
+        "model": [
+            "2e3fea0f-a577-4325-aabd-0bba752f06a7",
+            "4ad88e0d-34f0-40ca-9d81-5e9a97e8d615"
+        ],
+        "resource": [
+            "9578b511-06c1-4e29-8e3e-b9d03e11f008",
+            "009e58fc-4c32-4dae-9130-4780b5cdd9ec",
+            "0a4e55c4-0f03-4c0c-899d-a67ce69bce38",
+            "6469e853-99b9-4ec2-9df2-45b8db45ae16",
+            "2621b356-20b6-4ea0-b05c-8c22faa40f77"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

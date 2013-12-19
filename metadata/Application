@@ -1,0 +1,42 @@
+{
+    "type": "Ext.app.Application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "models": [
+            "MenuModel"
+        ],
+        "views": [
+            "MyViewport",
+            "HomePanel"
+        ],
+        "autoCreateViewport": true,
+        "controllers": [
+            "FrameController",
+            "UserController",
+            "ShopController"
+        ],
+        "name": "MyApp"
+    },
+    "designerId": "application",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "launch",
+                "implHandler": [
+                    ""
+                ]
+            },
+            "designerId": "472e4cc6-4c08-4411-a358-d0e852b7cf7e"
+        }
+    ]
+}

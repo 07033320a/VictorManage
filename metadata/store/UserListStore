@@ -1,0 +1,58 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": null,
+        "model": "UserListModel",
+        "storeId": "UserList",
+        "designer|userClassName": "UserListStore",
+        "pageSize": 10
+    },
+    "designerId": "f700909a-3b45-4309-ba8c-8c4ce3efe64c",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "actionMethods": [
+                    "{create:\"POST\",read:\"POST\",update:\"POST\",destroy:\"POST\"}"
+                ],
+                "url": "/Home/UserListGet"
+            },
+            "configAlternates": {
+                "actionMethods": "object"
+            },
+            "designerId": "0b01d3cf-2048-4c6a-902e-b221f5ceda0d",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "actionMethods",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data",
+                        "totalProperty": "totalN"
+                    },
+                    "designerId": "5ad40090-28bf-4f79-94a5-75d1138931e3"
+                }
+            ]
+        }
+    ]
+}

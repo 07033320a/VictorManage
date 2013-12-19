@@ -1,0 +1,51 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "stores": [
+            "ShopListStore",
+            "TypeStore",
+            "RecShopStore",
+            "RecShopAddListStore"
+        ],
+        "views": [
+            "ShopManagement",
+            "RecShop",
+            "ShopAdd"
+        ],
+        "designer|userClassName": "ShopController"
+    },
+    "designerId": "b827f1e1-590b-4f48-b10e-ca1767d1559f",
+    "cn": [
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "shoplist",
+                "selector": "shoplist"
+            },
+            "designerId": "45910f0c-258a-4cc5-8a91-287d3a1d8893"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "recshop",
+                "selector": "recshop"
+            },
+            "designerId": "0467ca5e-7c4c-4759-bae3-03f79924cdf8"
+        }
+    ]
+}

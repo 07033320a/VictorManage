@@ -1,0 +1,358 @@
+{
+    "type": "Ext.container.Viewport",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "defaultPage": null,
+        "border": null,
+        "style": null,
+        "designer|userClassName": "MyViewport",
+        "designer|initialView": true,
+        "defaults": null,
+        "layout": "border"
+    },
+    "configAlternates": {
+        "defaultPage": "object"
+    },
+    "designerId": "68902d2d-1603-42d0-a380-5dd2e7f463ea",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "testitem",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "defaultPage",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.panel.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": null,
+                "layout|region": "north",
+                "border": false,
+                "frame": true,
+                "height": 35,
+                "html": null,
+                "itemId": "LogoPanel",
+                "bodyStyle": [
+                    "background-color:#445D73;"
+                ],
+                "title": null
+            },
+            "configAlternates": {
+                "html": "string"
+            },
+            "designerId": "d2d78c99-d234-485e-99ae-bf890e6b3c33",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "bottom",
+                        "container|align": null,
+                        "id": "basicToolBar",
+                        "itemId": "basicToolBar"
+                    },
+                    "designerId": "062d6769-f6d7-42ed-be9e-0c26cfe54c15",
+                    "cn": [
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "id": "btnHome",
+                                "itemId": "btnHome",
+                                "icon": "/Scripts/data/img/home.png",
+                                "text": null,
+                                "tooltip": [
+                                    "Home"
+                                ]
+                            },
+                            "designerId": "b22f4b1e-2891-42b7-bb35-2f202bc64c22"
+                        },
+                        {
+                            "type": "Ext.toolbar.Separator",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null
+                            },
+                            "designerId": "a80a543f-d2bf-4888-a827-b08f14fb54fd"
+                        },
+                        {
+                            "type": "Ext.Img",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "height": 16,
+                                "width": 16,
+                                "src": "/Scripts/data/img/user.png"
+                            },
+                            "designerId": "ae4e3391-15c7-4d9b-9722-3214f0d1bf23"
+                        },
+                        {
+                            "type": "Ext.form.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "text": "您好"
+                            },
+                            "designerId": "ee3e7431-d005-4171-9ec5-008b12464143"
+                        },
+                        {
+                            "type": "Ext.form.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "text": "管理员"
+                            },
+                            "designerId": "42fc8768-3074-4b46-81d4-130e5f116f2c"
+                        },
+                        {
+                            "type": "Ext.toolbar.Separator",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null
+                            },
+                            "designerId": "febc8502-df78-4bfe-8702-82e1fdaa9945"
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "id": "btnLanUS",
+                                "itemId": "btnLanUS",
+                                "designer|displayName": "English",
+                                "icon": "/Scripts/data/img/Lan_US_small.png",
+                                "text": "登陆"
+                            },
+                            "designerId": "300abf16-f0f8-4585-9665-51a2d51854e7"
+                        },
+                        {
+                            "type": "Ext.toolbar.Separator",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null
+                            },
+                            "designerId": "f28513f2-1c25-46d3-8c5b-850a0e430b41"
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "text": "注销"
+                            },
+                            "designerId": "337bfc2f-f9ed-4914-9907-7d0181c62974"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.tree.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|collapseMode": null,
+                "layout|margins": null,
+                "layout|region": "west",
+                "layout|split": true,
+                "width": 139,
+                "collapseFirst": false,
+                "collapsed": false,
+                "collapsible": true,
+                "title": "菜单",
+                "titleCollapse": false,
+                "store": null,
+                "root": [
+                    "{\r",
+                    "                        expanded: true,\r",
+                    "                        children: [\r",
+                    "                            {\r",
+                    "                                text: '商铺',\r",
+                    "                                id: 'm1_1',\r",
+                    "                                expanded: true,\r",
+                    "                                children: [{\r",
+                    "                                    text: '商铺管理',\r",
+                    "                                    id: 'm1_1_1',\r",
+                    "                                    leaf: true\r",
+                    "                                   },{\r",
+                    "                                    text: '推荐商铺',\r",
+                    "                                    id: 'm1_1_2',\r",
+                    "                                    leaf: true\r",
+                    "                                   }]\r",
+                    "                               },{\r",
+                    "                                text: '用户管理',\r",
+                    "                                id: 'm1_2',\r",
+                    "                                leaf: true\r",
+                    "                               }   \r",
+                    "                        ]\r",
+                    "}"
+                ],
+                "rootVisible": false
+            },
+            "designerId": "32d7166e-bb83-4830-bf7d-8354d3466326",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onTreepanelItemClick",
+                        "implHandler": [
+                            "//alert(record.getId());\r",
+                            "//var workspacePanel = this.child('#WorkspacePanel');\r",
+                            "//workspacePanel.layout.setActiveItem(record.getId());\r",
+                            "//workspacePanel.setTitle(record.getId());"
+                        ],
+                        "name": "itemclick",
+                        "scope": "me"
+                    },
+                    "designerId": "49a96504-5b07-432a-aa19-c5fa47716115"
+                }
+            ]
+        },
+        {
+            "type": "Ext.panel.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": 1,
+                "layout|region": "center",
+                "id": "WorkspacePanel",
+                "itemId": "WorkspacePanel",
+                "autoScroll": true,
+                "layout": "fit",
+                "title": null
+            },
+            "designerId": "70fa4b75-40c6-4b84-908c-0a61cea846b5",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "HomePanel"
+                    },
+                    "designerId": "5862c747-a2bc-486c-bb7b-e841c1123a8b",
+                    "masterInstanceId": "a7f66410-b969-46b4-bec9-f5f246aaaa0c"
+                }
+            ]
+        },
+        {
+            "type": "Ext.panel.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|region": "south",
+                "height": 27,
+                "designer|displayName": "Bottom",
+                "bodyStyle": [
+                    "background-color:#38B3EA;"
+                ],
+                "title": null
+            },
+            "designerId": "d8a471a3-74b5-4b37-a04f-313aa310259a",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "bottom",
+                        "container|align": "middle",
+                        "container|pack": "center",
+                        "height": 28
+                    },
+                    "designerId": "cc23b3de-366f-4342-9ac6-827f53f117b2",
+                    "cn": [
+                        {
+                            "type": "Ext.form.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "text": "Copy Right"
+                            },
+                            "designerId": "e01b5fd9-e3d3-4081-a448-cf01fedd3eb4"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
