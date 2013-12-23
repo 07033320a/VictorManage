@@ -17,7 +17,7 @@ Ext.define('MyApp.view.ShopAdd', {
     extend: 'Ext.window.Window',
 
     height: 447,
-    width: 374,
+    width: 419,
     resizable: false,
     layout: {
         type: 'fit'
@@ -32,6 +32,11 @@ Ext.define('MyApp.view.ShopAdd', {
             items: [
                 {
                     xtype: 'form',
+                    autoScroll: true,
+                    layout: {
+                        align: 'stretch',
+                        type: 'vbox'
+                    },
                     bodyPadding: 10,
                     title: '',
                     items: [
@@ -40,6 +45,7 @@ Ext.define('MyApp.view.ShopAdd', {
                             anchor: '100%',
                             fieldLabel: '店铺名',
                             name: 'shopname',
+                            allowBlank: false,
                             enforceMaxLength: true,
                             maxLength: 128
                         },
@@ -49,7 +55,7 @@ Ext.define('MyApp.view.ShopAdd', {
                             fieldLabel: '用户',
                             name: 'userid',
                             allowBlank: false,
-                            emptyText: '     <!--           请选择           --!>',
+                            emptyText: '           <!--            请选择           --!>',
                             editable: false,
                             displayField: 'username',
                             hiddenName: 'userid',
@@ -58,14 +64,14 @@ Ext.define('MyApp.view.ShopAdd', {
                         },
                         {
                             xtype: 'combobox',
-                            anchor: '100%',
                             fieldLabel: '类型',
                             name: 'typeid',
                             allowBlank: false,
-                            emptyText: '     <!--           请选择           --!>',
+                            emptyText: '           <!--            请选择           --!>',
                             editable: false,
                             displayField: 'typeName',
                             hiddenName: 'typeid',
+                            multiSelect: true,
                             store: 'TypeStore',
                             valueField: 'typeId'
                         },
@@ -92,10 +98,12 @@ Ext.define('MyApp.view.ShopAdd', {
                             fieldLabel: '电话',
                             name: 'tel',
                             enforceMaxLength: true,
-                            maxLength: 11
+                            maxLength: 11,
+                            vtype: 'alphanum'
                         },
                         {
                             xtype: 'filefield',
+                            width: 385,
                             fieldLabel: '商铺详细页图片',
                             name: 'shopdetailpic',
                             buttonText: '浏览...',
@@ -103,6 +111,7 @@ Ext.define('MyApp.view.ShopAdd', {
                         },
                         {
                             xtype: 'filefield',
+                            width: 385,
                             fieldLabel: '商铺列表页图片',
                             name: 'shoplistpic',
                             buttonText: '浏览...',
@@ -110,6 +119,7 @@ Ext.define('MyApp.view.ShopAdd', {
                         },
                         {
                             xtype: 'filefield',
+                            width: 385,
                             fieldLabel: '主页图片',
                             name: 'shoplogopic',
                             buttonText: '浏览...',
@@ -124,21 +134,36 @@ Ext.define('MyApp.view.ShopAdd', {
                             maxLength: 300
                         },
                         {
-                            xtype: 'button',
-                            icon: 'data/img/save.gif',
-                            text: '确认',
-                            listeners: {
-                                click: {
-                                    fn: me.onButtonClick,
-                                    scope: me
+                            xtype: 'container',
+                            flex: 1,
+                            layout: {
+                                type: 'column'
+                            },
+                            items: [
+                                {
+                                    xtype: 'button',
+                                    icon: 'data/img/save.gif',
+                                    text: '确认',
+                                    listeners: {
+                                        click: {
+                                            fn: me.onButtonClick,
+                                            scope: me
+                                        }
+                                    }
+                                },
+                                {
+                                    xtype: 'button',
+                                    margin: '0 0 0 20',
+                                    icon: 'data/img/reset.gif',
+                                    text: '重置',
+                                    listeners: {
+                                        click: {
+                                            fn: me.onButtonClick1,
+                                            scope: me
+                                        }
+                                    }
                                 }
-                            }
-                        },
-                        {
-                            xtype: 'button',
-                            margin: '0 0 0 20',
-                            icon: 'data/img/reset.gif',
-                            text: '重置'
+                            ]
                         }
                     ]
                 }
@@ -201,6 +226,10 @@ Ext.define('MyApp.view.ShopAdd', {
             return true;
         }
 
+    },
+
+    onButtonClick1: function(button, e, eOpts) {
+        this.up('form').getForm().reset();
     }
 
 });

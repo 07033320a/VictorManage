@@ -156,11 +156,33 @@ Ext.define('MyApp.view.ShopManagement', {
                         },
                         {
                             xtype: 'gridcolumn',
+                            hidden: true,
+                            width: 79,
+                            dataIndex: 'typeIds',
+                            text: '类型ids'
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                                var max = 1;
+                                if(value && value.split(',').length>1 ){
+                                    metaData.tdAttr = 'data-qtip='+ value +'';
+                                }
+
+                                return value;
+                            },
+                            width: 79,
+                            dataIndex: 'typeNames',
+                            text: '类型'
+                        },
+                        {
+                            xtype: 'gridcolumn',
                             dataIndex: 'address',
                             text: '地址'
                         },
                         {
                             xtype: 'gridcolumn',
+                            hidden: true,
                             width: 55,
                             dataIndex: 'areaId',
                             text: 'AreaId'

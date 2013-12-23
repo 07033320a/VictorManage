@@ -50,6 +50,12 @@ Ext.define('MyApp.store.ShopListStore', {
                     name: 'typeId'
                 },
                 {
+                    name: 'typeIds'
+                },
+                {
+                    name: 'typeNames'
+                },
+                {
                     name: 'address'
                 },
                 {
