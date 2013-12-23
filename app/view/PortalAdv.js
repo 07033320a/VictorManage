@@ -143,7 +143,7 @@ Ext.define('MyApp.view.PortalAdv', {
                             xtype: 'gridcolumn',
                             renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
 
-                                return Ext.Date.format(new Date(Number(value.split('(')[1].split(')')[0])),'Y-m-d H:i')
+                                return Number(value.split('(')[1].split(')')[0])>0?Ext.Date.format(new Date(Number(value.split('(')[1].split(')')[0])),'Y-m-d H:i'):null;
                             },
                             width: 105,
                             dataIndex: 'addTime',
@@ -153,21 +153,13 @@ Ext.define('MyApp.view.PortalAdv', {
                             xtype: 'gridcolumn',
                             renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
 
-                                return Ext.Date.format(new Date(Number(value.split('(')[1].split(')')[0])),'Y-m-d H:i')
+                                return Number(value.split('(')[1].split(')')[0])>0?Ext.Date.format(new Date(Number(value.split('(')[1].split(')')[0])),'Y-m-d H:i'):null;
                             },
                             width: 95,
                             dataIndex: 'endTime',
                             text: '结束时间'
                         }
-                    ],
-                    selModel: Ext.create('Ext.selection.RowModel', {
-                        listeners: {
-                            selectionchange: {
-                                fn: me.onRowModelSelectionChange,
-                                scope: me
-                            }
-                        }
-                    })
+                    ]
                 }
             ]
         });
@@ -215,10 +207,6 @@ Ext.define('MyApp.view.PortalAdv', {
                 }
 
             }});
-    },
-
-    onRowModelSelectionChange: function(model, selected, eOpts) {
-        selected[0].data?Ext.ComponentQuery.query('portaladv form')[0].getForm().setValues(selected[0].data):undefined;
     }
 
 });

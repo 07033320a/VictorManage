@@ -38,6 +38,9 @@ Ext.define('MyApp.store.RecShopStore', {
             },
             fields: [
                 {
+                    name: 'id'
+                },
+                {
                     name: 'shopId'
                 },
                 {

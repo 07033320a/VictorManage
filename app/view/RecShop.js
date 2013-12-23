@@ -101,6 +101,12 @@ Ext.define('MyApp.view.RecShop', {
                                 {
                                     xtype: 'gridcolumn',
                                     hidden: true,
+                                    dataIndex: 'id',
+                                    text: 'id'
+                                },
+                                {
+                                    xtype: 'gridcolumn',
+                                    hidden: true,
                                     dataIndex: 'shopId',
                                     text: 'ShopId'
                                 },
@@ -157,6 +163,28 @@ Ext.define('MyApp.view.RecShop', {
                                     width: 46,
                                     items: [
                                         {
+                                            handler: function(view, rowIndex, colIndex, item, e, record, row) {
+                                                var grid =  this.down('grid');
+
+                                                var id = record.data['id'];
+
+                                                Ext.Ajax.request( {
+                                                    url : '/Shop/RecShopDel',
+                                                    method : 'post',
+                                                    scope: this,
+                                                    params : {
+                                                        id : id
+                                                    },
+                                                    success : function(response, options) {
+                                                        this.up('grid').getStore().load();
+                                                    },
+                                                    failure : function() {
+                                                        Ext.Msg.alert('提示','失败');
+                                                    }
+                                                });
+
+
+                                            },
                                             icon: 'data/img/delete2.gif'
                                         }
                                     ]
