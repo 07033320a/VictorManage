@@ -57,7 +57,22 @@ Ext.define('MyApp.store.PortalAdvStore', {
                 {
                     name: 'endTime'
                 }
-            ]
+            ],
+            listeners: {
+                load: {
+                    fn: me.onJsonstoreLoad,
+                    scope: me
+                }
+            }
         }, cfg)]);
+    },
+
+    onJsonstoreLoad: function(store, records, successful, eOpts) {
+        if(successful && records.length == 14){
+            Ext.ComponentQuery.query('portaladv button[itemId=newBtn]')[0].setDisabled(true);
+        }else{
+            Ext.ComponentQuery.query('portaladv button[itemId=newBtn]')[0].setDisabled(true);
+        }
     }
+
 });

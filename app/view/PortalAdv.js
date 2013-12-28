@@ -45,6 +45,7 @@ Ext.define('MyApp.view.PortalAdv', {
 
 
                                     },
+                                    itemId: 'newBtn',
                                     icon: 'data/img/add1.png',
                                     text: '新建'
                                 },
@@ -84,7 +85,12 @@ Ext.define('MyApp.view.PortalAdv', {
                         {
                             xtype: 'gridcolumn',
                             dataIndex: 'advertisingTitle',
-                            text: '广告标题'
+                            text: '广告标题',
+                            editor: {
+                                xtype: 'textfield',
+                                name: 'advertisingTitle',
+                                allowBlank: false
+                            }
                         },
                         {
                             xtype: 'gridcolumn',
@@ -97,27 +103,56 @@ Ext.define('MyApp.view.PortalAdv', {
                                     return  '下部广告';
                                 }
                             },
-                            width: 63,
+                            width: 75,
                             dataIndex: 'advType',
-                            text: '广告类型'
+                            text: '广告类型',
+                            editor: me.processAdvType({
+                                xtype: 'combobox',
+                                name: 'advType',
+                                allowBlank: false,
+                                editable: false,
+                                displayField: 'Name',
+                                hiddenName: 'advType',
+                                valueField: 'Value'
+                            })
                         },
                         {
                             xtype: 'gridcolumn',
-                            width: 91,
+                            width: 100,
                             dataIndex: 'shopId',
-                            text: '关联店铺'
+                            text: '关联店铺',
+                            editor: {
+                                xtype: 'combobox',
+                                width: 200,
+                                name: 'shopId',
+                                matchFieldWidth: false,
+                                displayField: 'shopName',
+                                hiddenName: 'shopId',
+                                pageSize: 10,
+                                store: 'ShopListStore',
+                                valueField: 'shopId'
+                            }
                         },
                         {
                             xtype: 'gridcolumn',
-                            width: 40,
+                            width: 46,
                             dataIndex: 'power',
-                            text: '权值'
+                            text: '权值',
+                            editor: {
+                                xtype: 'numberfield',
+                                name: 'power',
+                                allowBlank: false
+                            }
                         },
                         {
                             xtype: 'gridcolumn',
                             width: 104,
                             dataIndex: 'content',
-                            text: '广告体'
+                            text: '广告体',
+                            editor: {
+                                xtype: 'textfield',
+                                name: 'content'
+                            }
                         },
                         {
                             xtype: 'gridcolumn',
@@ -129,7 +164,7 @@ Ext.define('MyApp.view.PortalAdv', {
 
                                 return value.length > max ? value : null;
                             },
-                            width: 144,
+                            width: 150,
                             dataIndex: 'pictureUrl',
                             text: '广告图片url'
                         },
@@ -145,7 +180,7 @@ Ext.define('MyApp.view.PortalAdv', {
 
                                 return Number(value.split('(')[1].split(')')[0])>0?Ext.Date.format(new Date(Number(value.split('(')[1].split(')')[0])),'Y-m-d H:i'):null;
                             },
-                            width: 105,
+                            width: 120,
                             dataIndex: 'addTime',
                             text: '开始时间'
                         },
@@ -155,16 +190,41 @@ Ext.define('MyApp.view.PortalAdv', {
 
                                 return Number(value.split('(')[1].split(')')[0])>0?Ext.Date.format(new Date(Number(value.split('(')[1].split(')')[0])),'Y-m-d H:i'):null;
                             },
-                            width: 95,
+                            width: 120,
                             dataIndex: 'endTime',
                             text: '结束时间'
                         }
+                    ],
+                    plugins: [
+                        Ext.create('Ext.grid.plugin.RowEditing', {
+                            listeners: {
+                                edit: {
+                                    fn: me.onRowEditingEdit,
+                                    scope: me
+                                }
+                            }
+                        })
                     ]
                 }
             ]
         });
 
         me.callParent(arguments);
+    },
+
+    processAdvType: function(config) {
+        config.store = Ext.create('Ext.data.Store', {
+            autoDestroy: true,
+            fields: [
+            {type: 'string', name: 'Name'},
+            {type: 'string', name: 'Value'}
+            ],
+            data: [
+            {"Name":"头部广告","Value":"1"},
+            {"Name":"中部广告","Value":"2"},
+            {"Name":"下部广告","Value":"3"}]
+        });
+        return config;
     },
 
     onButtonClick: function(button, e, eOpts) {
@@ -207,6 +267,28 @@ Ext.define('MyApp.view.PortalAdv', {
                 }
 
             }});
+    },
+
+    onRowEditingEdit: function(editor, context, eOpts) {
+
+        Ext.Ajax.request({     
+            url:'/Manage/AdvUpdate',  
+            params:context.record.data,  
+            scope: this,
+            success: function(resp,opts) {   
+                var respText = Ext.JSON.decode(resp.responseText);  
+                if(respText.success){
+                    Ext.Msg.alert('提示','成功');
+                    this.down('grid').getStore().load();
+                }else{
+                    Ext.Msg.alert('提示','失败');
+                }
+
+            },   
+            failure: function(resp,opts) {   
+                Ext.Msg.alert('提示','失败');
+            }     
+        });
     }
 
 });

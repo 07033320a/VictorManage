@@ -84,7 +84,7 @@ Ext.define('MyApp.view.LoginWin', {
         if(form.isValid()){
             form.submit({
                 clientValidation: true,
-                url: '/User/Login',
+                url: '/Manage/Login',
                 scope:this,
                 success: function(form, action) {
                     Ext.util.Cookies.set('username',form.getValues().username);

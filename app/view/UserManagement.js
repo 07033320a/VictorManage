@@ -178,12 +178,22 @@ Ext.define('MyApp.view.UserManagement', {
                         {
                             xtype: 'gridcolumn',
                             dataIndex: 'password',
-                            text: '密码'
+                            text: '密码',
+                            editor: {
+                                xtype: 'textfield',
+                                name: 'password',
+                                allowBlank: false
+                            }
                         },
                         {
                             xtype: 'gridcolumn',
                             dataIndex: 'cnName',
-                            text: '用户名'
+                            text: '用户名',
+                            editor: {
+                                xtype: 'textfield',
+                                name: 'cnName',
+                                allowBlank: false
+                            }
                         },
                         {
                             xtype: 'gridcolumn',
@@ -198,17 +208,52 @@ Ext.define('MyApp.view.UserManagement', {
                             },
                             width: 76,
                             dataIndex: 'type',
-                            text: '类型'
+                            text: '类型',
+                            editor: {
+                                xtype: 'combobox',
+                                name: 'type',
+                                allowBlank: false,
+                                editable: false,
+                                hiddenName: 'type',
+                                store: [
+                                    [
+                                        '',
+                                        ''
+                                    ],
+                                    [
+                                        '1',
+                                        '普通用户'
+                                    ],
+                                    [
+                                        '2',
+                                        '会员'
+                                    ],
+                                    [
+                                        '9',
+                                        '管理员'
+                                    ]
+                                ]
+                            }
                         },
                         {
                             xtype: 'gridcolumn',
                             dataIndex: 'email',
-                            text: '邮箱'
+                            text: '邮箱',
+                            editor: {
+                                xtype: 'textfield',
+                                name: 'email',
+                                inputType: 'email'
+                            }
                         },
                         {
                             xtype: 'gridcolumn',
                             dataIndex: 'mobilephone',
-                            text: '电话'
+                            text: '电话',
+                            editor: {
+                                xtype: 'textfield',
+                                name: 'mobilephone',
+                                inputType: 'tel'
+                            }
                         },
                         {
                             xtype: 'gridcolumn',
@@ -228,6 +273,9 @@ Ext.define('MyApp.view.UserManagement', {
                         {
                             xtype: 'gridcolumn',
                             renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                                if(!value){
+                                    return value;
+                                }
                                 var max = 1;
                                 if(value.length > max ){
                                     metaData.tdAttr = 'data-qtip="<img width=200px height=100px src= '+ value +' />"';
@@ -255,6 +303,20 @@ Ext.define('MyApp.view.UserManagement', {
                             dataIndex: 'isEnabled',
                             text: '可见'
                         }
+                    ],
+                    plugins: [
+                        Ext.create('Ext.grid.plugin.RowEditing', {
+                            listeners: {
+                                edit: {
+                                    fn: me.onRowEditingEdit,
+                                    scope: me
+                                },
+                                validateedit: {
+                                    fn: me.onRowEditingValidateedit,
+                                    scope: me
+                                }
+                            }
+                        })
                     ]
                 }
             ]
@@ -305,6 +367,31 @@ Ext.define('MyApp.view.UserManagement', {
         }else{
             Ext.Msg.alert('提示','请选择记录！');
         }
+    },
+
+    onRowEditingEdit: function(editor, context, eOpts) {
+        Ext.Ajax.request({     
+            url:'/Manage/UserUpdate',  
+            params:context.record.data,  
+            scope: this,
+            success: function(resp,opts) {   
+                var respText = Ext.JSON.decode(resp.responseText);  
+                if(respText.success){
+                    Ext.Msg.alert('提示','成功');
+                    this.down('grid').getStore().load();
+                }else{
+                    Ext.Msg.alert('提示','失败');
+                }
+
+            },   
+            failure: function(resp,opts) {   
+                Ext.Msg.alert('提示','失败');
+            }     
+        });
+    },
+
+    onRowEditingValidateedit: function(editor, context, eOpts) {
+
     }
 
 });

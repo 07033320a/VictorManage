@@ -35,7 +35,7 @@ Ext.define('MyApp.store.UserListStore', {
                     update: 'POST',
                     destroy: 'POST'
                 },
-                url: '/User/UserListGet',
+                url: '/Manage/UserListGet',
                 reader: {
                     type: 'json',
                     root: 'data',

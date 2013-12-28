@@ -21,7 +21,7 @@ Ext.define('MyApp.store.ShopListStore', {
         cfg = cfg || {};
         me.callParent([Ext.apply({
             storeId: 'ShopListStore',
-            pageSize: 10,
+            pageSize: 20,
             proxy: {
                 type: 'ajax',
                 actionMethods: {

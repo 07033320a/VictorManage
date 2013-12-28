@@ -140,7 +140,12 @@ Ext.define('MyApp.view.ShopManagement', {
                         {
                             xtype: 'gridcolumn',
                             dataIndex: 'shopName',
-                            text: '商铺名称'
+                            text: '商铺名称',
+                            editor: {
+                                xtype: 'textfield',
+                                name: 'shopName',
+                                allowBlank: false
+                            }
                         },
                         {
                             xtype: 'gridcolumn',
@@ -173,12 +178,27 @@ Ext.define('MyApp.view.ShopManagement', {
                             },
                             width: 79,
                             dataIndex: 'typeNames',
-                            text: '类型'
+                            text: '类型',
+                            editor: {
+                                xtype: 'combobox',
+                                width: 150,
+                                name: 'typeid',
+                                editable: false,
+                                displayField: 'typeName',
+                                hiddenName: 'typeid',
+                                multiSelect: true,
+                                store: 'TypeStore',
+                                valueField: 'typeId'
+                            }
                         },
                         {
                             xtype: 'gridcolumn',
                             dataIndex: 'address',
-                            text: '地址'
+                            text: '地址',
+                            editor: {
+                                xtype: 'textfield',
+                                name: 'address'
+                            }
                         },
                         {
                             xtype: 'gridcolumn',
@@ -191,7 +211,14 @@ Ext.define('MyApp.view.ShopManagement', {
                             xtype: 'gridcolumn',
                             width: 44,
                             dataIndex: 'status',
-                            text: '状态'
+                            text: '状态',
+                            editor: {
+                                xtype: 'combobox',
+                                name: 'status',
+                                allowBlank: false,
+                                editable: false,
+                                hiddenName: 'status'
+                            }
                         },
                         {
                             xtype: 'gridcolumn',
@@ -220,6 +247,76 @@ Ext.define('MyApp.view.ShopManagement', {
                         {
                             xtype: 'gridcolumn',
                             renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                                var max = 15;
+                                metaData.tdAttr = 'data-qtip="' + value + '"';
+                                return value.length < max ? value : value.substring(0, max - 3) + '...';
+                            },
+                            dataIndex: 'introduction',
+                            text: '简介',
+                            editor: {
+                                xtype: 'textareafield',
+                                name: 'introducation'
+                            }
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                                var max = 1;
+                                if(value.length > max ){
+                                    metaData.tdAttr = 'data-qtip="<img width=200px height=100px src= '+ value +' />"';
+                                }
+
+                                return value.length > max ? value : null;
+                            },
+                            dataIndex: 'piclist',
+                            text: '列表图片地址',
+                            editor: {
+                                xtype: 'textfield',
+                                name: 'piclist'
+                            }
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                                var max = 1;
+                                if(value.length > max ){
+                                    metaData.tdAttr = 'data-qtip="<img width=200px height=100px src= '+ value +' />"';
+                                }
+
+                                return value.length > max ? value : null;
+                            },
+                            dataIndex: 'picdetail',
+                            text: '详细页图片地址',
+                            editor: {
+                                xtype: 'textfield',
+                                name: 'picdetail'
+                            }
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                                var max = 1;
+                                if(value.length > max ){
+                                    metaData.tdAttr = 'data-qtip="<img width=200px height=100px src= '+ value +' />"';
+                                }
+
+                                return value.length > max ? value : null;
+                            },
+                            dataIndex: 'piclogo',
+                            text: '首页图片地址',
+                            editor: {
+                                xtype: 'textfield',
+                                name: 'piclogo'
+                            }
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            dataIndex: 'weixincode',
+                            text: '微信二维码'
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
 
                                 return Ext.Date.format(new Date(Number(value.split('(')[1].split(')')[0])),'Y-m-d H:i')
                             },
@@ -230,22 +327,7 @@ Ext.define('MyApp.view.ShopManagement', {
                             xtype: 'gridcolumn',
                             width: 62,
                             dataIndex: 'modifyuser',
-                            text: '修改者'
-                        },
-                        {
-                            xtype: 'gridcolumn',
-                            renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
-                                var max = 15;
-                                metaData.tdAttr = 'data-qtip="' + value + '"';
-                                return value.length < max ? value : value.substring(0, max - 3) + '...';
-                            },
-                            dataIndex: 'introduction',
-                            text: '简介'
-                        },
-                        {
-                            xtype: 'gridcolumn',
-                            dataIndex: 'weixincode',
-                            text: '微信二维码'
+                            text: '修改者id'
                         },
                         {
                             xtype: 'gridcolumn',
@@ -267,46 +349,17 @@ Ext.define('MyApp.view.ShopManagement', {
                             xtype: 'gridcolumn',
                             dataIndex: 'favorabledeals',
                             text: '优惠方案'
-                        },
-                        {
-                            xtype: 'gridcolumn',
-                            renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
-                                var max = 1;
-                                if(value.length > max ){
-                                    metaData.tdAttr = 'data-qtip="<img width=200px height=100px src= '+ value +' />"';
-                                }
-
-                                return value.length > max ? value : null;
-                            },
-                            dataIndex: 'piclist',
-                            text: '列表图片地址'
-                        },
-                        {
-                            xtype: 'gridcolumn',
-                            renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
-                                var max = 1;
-                                if(value.length > max ){
-                                    metaData.tdAttr = 'data-qtip="<img width=200px height=100px src= '+ value +' />"';
-                                }
-
-                                return value.length > max ? value : null;
-                            },
-                            dataIndex: 'picdetail',
-                            text: '详细页图片地址'
-                        },
-                        {
-                            xtype: 'gridcolumn',
-                            renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
-                                var max = 1;
-                                if(value.length > max ){
-                                    metaData.tdAttr = 'data-qtip="<img width=200px height=100px src= '+ value +' />"';
-                                }
-
-                                return value.length > max ? value : null;
-                            },
-                            dataIndex: 'piclogo',
-                            text: '首页图片地址'
                         }
+                    ],
+                    plugins: [
+                        Ext.create('Ext.grid.plugin.RowEditing', {
+                            listeners: {
+                                edit: {
+                                    fn: me.onRowEditingEdit,
+                                    scope: me
+                                }
+                            }
+                        })
                     ]
                 }
             ]
@@ -357,6 +410,29 @@ Ext.define('MyApp.view.ShopManagement', {
         }else{
             Ext.Msg.alert('提示','请选择记录！');
         }
+    },
+
+    onRowEditingEdit: function(editor, context, eOpts) {
+        debugger;
+        context.record.data.typeid = context.newValues.typeid;
+        Ext.Ajax.request({     
+            url:'/Manage/ShopUpdate',  
+            params:context.record.data,  
+            scope: this,
+            success: function(resp,opts) {   
+                var respText = Ext.JSON.decode(resp.responseText);  
+                if(respText.success){
+                    Ext.Msg.alert('提示','成功');
+                    this.down('grid').getStore().load();
+                }else{
+                    Ext.Msg.alert('提示','失败');
+                }
+
+            },   
+            failure: function(resp,opts) {   
+                Ext.Msg.alert('提示','失败');
+            }     
+        });
     }
 
 });

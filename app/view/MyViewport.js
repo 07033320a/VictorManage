@@ -93,7 +93,7 @@ Ext.define('MyApp.view.MyViewport', {
                     xtype: 'treepanel',
                     region: 'west',
                     split: true,
-                    width: 139,
+                    width: 155,
                     collapseFirst: false,
                     collapsed: false,
                     collapsible: true,

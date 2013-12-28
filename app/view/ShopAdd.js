@@ -42,7 +42,6 @@ Ext.define('MyApp.view.ShopAdd', {
                     items: [
                         {
                             xtype: 'textfield',
-                            anchor: '100%',
                             fieldLabel: '店铺名',
                             name: 'shopname',
                             allowBlank: false,
@@ -51,7 +50,6 @@ Ext.define('MyApp.view.ShopAdd', {
                         },
                         {
                             xtype: 'combobox',
-                            anchor: '100%',
                             fieldLabel: '用户',
                             name: 'userid',
                             allowBlank: false,
@@ -77,7 +75,6 @@ Ext.define('MyApp.view.ShopAdd', {
                         },
                         {
                             xtype: 'textfield',
-                            anchor: '100%',
                             fieldLabel: '地址',
                             name: 'address',
                             enforceMaxLength: true,
@@ -85,7 +82,6 @@ Ext.define('MyApp.view.ShopAdd', {
                         },
                         {
                             xtype: 'textfield',
-                            anchor: '100%',
                             fieldLabel: '邮箱',
                             name: 'email',
                             enforceMaxLength: true,
@@ -94,7 +90,6 @@ Ext.define('MyApp.view.ShopAdd', {
                         },
                         {
                             xtype: 'textfield',
-                            anchor: '100%',
                             fieldLabel: '电话',
                             name: 'tel',
                             enforceMaxLength: true,
@@ -127,7 +122,6 @@ Ext.define('MyApp.view.ShopAdd', {
                         },
                         {
                             xtype: 'textareafield',
-                            anchor: '100%',
                             fieldLabel: '简介',
                             name: 'introduction',
                             enforceMaxLength: true,
