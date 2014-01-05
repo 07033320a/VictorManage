@@ -6,7 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
-        "height": 372,
+        "height": 368,
         "id": null,
         "itemId": null,
         "margin": null,
@@ -321,27 +321,27 @@
                                             "\r",
                                             "var id = '';\r",
                                             "if(grid.getSelectionModel().selected.length>0){\r",
-                                            "\tgrid.getSelectionModel().selected.each(function(item){\r",
+                                            "    grid.getSelectionModel().selected.each(function(item){\r",
                                             "        id+= item.get('id');\r",
                                             "    });\r",
-                                            "    \r",
+                                            "\r",
                                             "\r",
                                             "    Ext.Ajax.request( {\r",
-                                            "      url : '/Home/UserDel',\r",
-                                            "      method : 'post',\r",
-                                            "      scope: this,\r",
-                                            "      params : {\r",
+                                            "        url : '/User/UserDel',\r",
+                                            "        method : 'post',\r",
+                                            "        scope: this,\r",
+                                            "        params : {\r",
                                             "            id : id\r",
-                                            "      },\r",
-                                            "      success : function(response, options) {\r",
+                                            "        },\r",
+                                            "        success : function(response, options) {\r",
                                             "            this.down('grid').getStore().load();\r",
-                                            "      },\r",
-                                            "      failure : function() {\r",
-                                            "      }\r",
-                                            "});\r",
-                                            "    \r",
+                                            "        },\r",
+                                            "        failure : function() {\r",
+                                            "        }\r",
+                                            "    });\r",
+                                            "\r",
                                             "}else{\r",
-                                            "\tExt.Msg.alert('提示','请选择记录！');\r",
+                                            "    Ext.Msg.alert('提示','请选择记录！');\r",
                                             "}"
                                         ],
                                         "name": "click",
@@ -414,7 +414,22 @@
                         "dataIndex": "password",
                         "text": "密码"
                     },
-                    "designerId": "01876a0a-f7d3-4e22-ad05-c8e76cdba448"
+                    "designerId": "01876a0a-f7d3-4e22-ad05-c8e76cdba448",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "editor",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "name": "password",
+                                "allowBlank": false
+                            },
+                            "designerId": "f04b0f42-13c2-4a55-a480-8bd12d2c955d"
+                        }
+                    ]
                 },
                 {
                     "type": "Ext.grid.column.Column",
@@ -427,7 +442,22 @@
                         "dataIndex": "cnName",
                         "text": "用户名"
                     },
-                    "designerId": "1d8521f6-65e5-41df-bd3a-314747e31391"
+                    "designerId": "1d8521f6-65e5-41df-bd3a-314747e31391",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "editor",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "name": "cnName",
+                                "allowBlank": false
+                            },
+                            "designerId": "61952654-6610-431b-ae4d-140a499ef92c"
+                        }
+                    ]
                 },
                 {
                     "type": "Ext.grid.column.Column",
@@ -463,15 +493,38 @@
                                 ],
                                 "implHandler": [
                                     "if(value == '1'){\r",
-                                    "\treturn '普通用户';\r",
+                                    "    return '普通用户';\r",
                                     "}else if(value == '2'){\r",
-                                    "\treturn '会员';\r",
+                                    "    return '会员';\r",
                                     "}else{\r",
-                                    "\treturn '管理员';\r",
+                                    "    return '管理员';\r",
                                     "}"
                                 ]
                             },
                             "designerId": "881180ef-edc3-4254-ae5e-08f68cd4e074"
+                        },
+                        {
+                            "type": "Ext.form.field.ComboBox",
+                            "reference": {
+                                "name": "editor",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "name": "type",
+                                "allowBlank": false,
+                                "editable": false,
+                                "hiddenName": "type",
+                                "store": [
+                                    "[\r",
+                                    "    [\"\",\"\"],[\"1\",\"普通用户\"],[\"2\",\"会员\"],[\"9\",\"管理员\"]\r",
+                                    "]"
+                                ]
+                            },
+                            "configAlternates": {
+                                "store": "array"
+                            },
+                            "designerId": "69533a0c-3739-4fd7-b583-e9433568dea6"
                         }
                     ]
                 },
@@ -486,7 +539,22 @@
                         "dataIndex": "email",
                         "text": "邮箱"
                     },
-                    "designerId": "24227b7f-5ff4-43c4-88db-5a996dab6eee"
+                    "designerId": "24227b7f-5ff4-43c4-88db-5a996dab6eee",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "editor",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "name": "email",
+                                "inputType": "email"
+                            },
+                            "designerId": "128622ad-9c7b-4eaa-a5a8-7ab61da12d05"
+                        }
+                    ]
                 },
                 {
                     "type": "Ext.grid.column.Column",
@@ -499,7 +567,22 @@
                         "dataIndex": "mobilephone",
                         "text": "电话"
                     },
-                    "designerId": "0ef4ef32-de72-4401-bed0-d9a8eb3e2a60"
+                    "designerId": "0ef4ef32-de72-4401-bed0-d9a8eb3e2a60",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "editor",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "name": "mobilephone",
+                                "inputType": "tel"
+                            },
+                            "designerId": "3dd88600-75fc-4509-b728-86572c55c9cf"
+                        }
+                    ]
                 },
                 {
                     "type": "Ext.grid.column.Column",
@@ -550,10 +633,41 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "dataIndex": "dimensionalCodeUrl",
-                        "text": "二维码"
+                        "width": 49,
+                        "dataIndex": "sex",
+                        "text": "性别"
                     },
-                    "designerId": "690ff7f3-b20e-481f-9796-b0e8d3ac47ff"
+                    "designerId": "87813f24-615e-471b-9785-efc64a21ff5f",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "renderer",
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "implHandler": [
+                                    "if(value == '0'){\r",
+                                    "\treturn '女';\r",
+                                    "}else{\r",
+                                    "\treturn '男';\r",
+                                    "}"
+                                ]
+                            },
+                            "designerId": "0c25b1cb-9a8b-4502-ab23-89f14aafcf32"
+                        }
+                    ]
                 },
                 {
                     "type": "Ext.grid.column.Column",
@@ -563,10 +677,58 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "dataIndex": "picUrl",
-                        "text": "用户头像"
+                        "width": 125,
+                        "dataIndex": "birthday",
+                        "text": "生日"
                     },
-                    "designerId": "b25c5191-6165-4497-bb56-1f2791d9208c"
+                    "designerId": "496223d9-7cfc-4396-bf68-35e5783f562b",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Date",
+                            "reference": {
+                                "name": "editor",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "name": "birthday",
+                                "format": "Y年m月d日",
+                                "submitFormat": "Y年m月d日"
+                            },
+                            "designerId": "8e9af53f-0103-43fa-8e9f-cbbb125fc0b1"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "width": 157,
+                        "dataIndex": "identification",
+                        "text": "身份证"
+                    },
+                    "designerId": "5cac49b3-58af-4b4f-ac73-83c774cc6b20",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "editor",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "name": "identification",
+                                "enforceMaxLength": true,
+                                "maxLength": 18,
+                                "minLength": 18
+                            },
+                            "designerId": "4138da4c-e14b-4955-b48e-9c62834f853b"
+                        }
+                    ]
                 },
                 {
                     "type": "Ext.grid.column.Column",
@@ -590,11 +752,10 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "width": 69,
-                        "dataIndex": "sex",
-                        "text": "性别"
+                        "dataIndex": "isEnabled",
+                        "text": "可见"
                     },
-                    "designerId": "87813f24-615e-471b-9785-efc64a21ff5f"
+                    "designerId": "159768d4-050e-42e4-b347-189099453eca"
                 },
                 {
                     "type": "Ext.grid.column.Column",
@@ -604,10 +765,120 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "dataIndex": "isEnabled",
-                        "text": "可见"
+                        "dataIndex": "dimensionalCodeUrl",
+                        "text": "二维码"
                     },
-                    "designerId": "159768d4-050e-42e4-b347-189099453eca"
+                    "designerId": "690ff7f3-b20e-481f-9796-b0e8d3ac47ff"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "picUrl",
+                        "text": "用户头像"
+                    },
+                    "designerId": "b25c5191-6165-4497-bb56-1f2791d9208c",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "renderer",
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "implHandler": [
+                                    "if(!value){\r",
+                                    "\treturn value;\r",
+                                    "}\r",
+                                    "var max = 1;\r",
+                                    "if(value.length > max ){\r",
+                                    "    metaData.tdAttr = 'data-qtip=\"<img width=200px height=100px src= '+ value +' />\"';\r",
+                                    "}\r",
+                                    "\r",
+                                    "return value.length > max ? value : null;"
+                                ]
+                            },
+                            "designerId": "9abf6394-38a0-4c65-a29d-ef6641cf7df3"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.plugin.RowEditing",
+                    "reference": {
+                        "name": "plugins",
+                        "type": "array"
+                    },
+                    "codeClass": "Ext.grid.plugin.RowEditing",
+                    "designerId": "4aebf674-e131-46d9-a186-8522fc730899",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onRowEditingEdit",
+                                "implHandler": [
+                                    "context.record.data.birthday = Ext.Date.format(context.record.data.birthday,'Y年m月d日');\r",
+                                    "Ext.Ajax.request({     \r",
+                                    "    url:'/Manage/UserUpdate',  \r",
+                                    "    params:context.record.data,  \r",
+                                    "    scope: this,\r",
+                                    "    success: function(resp,opts) {   \r",
+                                    "        var respText = Ext.JSON.decode(resp.responseText);  \r",
+                                    "        if(respText.success){\r",
+                                    "            Ext.Msg.alert('提示','成功');\r",
+                                    "            this.down('grid').getStore().load();\r",
+                                    "        }else{\r",
+                                    "            Ext.Msg.alert('提示','失败');\r",
+                                    "        }\r",
+                                    "\r",
+                                    "    },   \r",
+                                    "    failure: function(resp,opts) {   \r",
+                                    "        Ext.Msg.alert('提示','失败');\r",
+                                    "    }     \r",
+                                    "});"
+                                ],
+                                "name": "edit",
+                                "scope": "me"
+                            },
+                            "designerId": "fac92a18-336e-431f-bac6-802eb1d4b484"
+                        },
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onRowEditingValidateedit",
+                                "implHandler": [
+                                    ""
+                                ],
+                                "name": "validateedit",
+                                "scope": "me"
+                            },
+                            "designerId": "7191b8bd-a8ef-42a8-af50-04d837d5297b"
+                        }
+                    ]
                 }
             ]
         }

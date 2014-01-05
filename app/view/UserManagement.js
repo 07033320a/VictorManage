@@ -17,7 +17,7 @@ Ext.define('MyApp.view.UserManagement', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.userlist',
 
-    height: 372,
+    height: 368,
     width: 624,
     layout: {
         type: 'fit'
@@ -267,6 +267,55 @@ Ext.define('MyApp.view.UserManagement', {
                         },
                         {
                             xtype: 'gridcolumn',
+                            renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                                if(value == '0'){
+                                    return '女';
+                                }else{
+                                    return '男';
+                                }
+                            },
+                            width: 49,
+                            dataIndex: 'sex',
+                            text: '性别'
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            width: 125,
+                            dataIndex: 'birthday',
+                            text: '生日',
+                            editor: {
+                                xtype: 'datefield',
+                                name: 'birthday',
+                                format: 'Y年m月d日',
+                                submitFormat: 'Y年m月d日'
+                            }
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            width: 157,
+                            dataIndex: 'identification',
+                            text: '身份证',
+                            editor: {
+                                xtype: 'textfield',
+                                name: 'identification',
+                                enforceMaxLength: true,
+                                maxLength: 18,
+                                minLength: 18
+                            }
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            width: 73,
+                            dataIndex: 'status',
+                            text: '状态'
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            dataIndex: 'isEnabled',
+                            text: '可见'
+                        },
+                        {
+                            xtype: 'gridcolumn',
                             dataIndex: 'dimensionalCodeUrl',
                             text: '二维码'
                         },
@@ -285,23 +334,6 @@ Ext.define('MyApp.view.UserManagement', {
                             },
                             dataIndex: 'picUrl',
                             text: '用户头像'
-                        },
-                        {
-                            xtype: 'gridcolumn',
-                            width: 73,
-                            dataIndex: 'status',
-                            text: '状态'
-                        },
-                        {
-                            xtype: 'gridcolumn',
-                            width: 69,
-                            dataIndex: 'sex',
-                            text: '性别'
-                        },
-                        {
-                            xtype: 'gridcolumn',
-                            dataIndex: 'isEnabled',
-                            text: '可见'
                         }
                     ],
                     plugins: [
@@ -370,6 +402,7 @@ Ext.define('MyApp.view.UserManagement', {
     },
 
     onRowEditingEdit: function(editor, context, eOpts) {
+        context.record.data.birthday = Ext.Date.format(context.record.data.birthday,'Y年m月d日');
         Ext.Ajax.request({     
             url:'/Manage/UserUpdate',  
             params:context.record.data,  

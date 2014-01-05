@@ -1,0 +1,47 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "stores": [
+            "PortalAdvStore"
+        ],
+        "views": [
+            "PortalAdv",
+            "AdvAdd"
+        ],
+        "designer|userClassName": "PortalController"
+    },
+    "designerId": "f57fc34c-e99a-45cf-84a4-4562b0378352",
+    "cn": [
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "portaladv",
+                "selector": "portaladv"
+            },
+            "designerId": "850df13c-40bd-460c-a42b-0b2725a6c22a"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "advadd",
+                "selector": "advadd"
+            },
+            "designerId": "1908168a-a81a-4fc7-b471-b8c8413083fa"
+        }
+    ]
+}

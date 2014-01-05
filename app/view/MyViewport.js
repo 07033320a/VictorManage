@@ -121,6 +121,11 @@ Ext.define('MyApp.view.MyViewport', {
                                         text: '推荐商铺',
                                         id: 'm1_1_2',
                                         leaf: true
+                                    },
+                                    {
+                                        text: '商铺类型',
+                                        id: 'm1_1_4',
+                                        leaf: true
                                     }
                                 ]
                             },

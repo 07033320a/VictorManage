@@ -166,6 +166,30 @@
                 "name": "type"
             },
             "designerId": "99f98219-d676-4441-ad50-0c470aee5e97"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "birthday"
+            },
+            "designerId": "835e0ec1-7dd0-4174-bfc2-25537f1a3c99"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "identification"
+            },
+            "designerId": "349421b3-38a3-4f49-beb5-33e4c70e667a"
         }
     ]
 }

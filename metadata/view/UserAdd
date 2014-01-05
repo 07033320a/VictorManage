@@ -76,6 +76,29 @@
                     "designerId": "2cb4e771-ac4f-4885-a5a0-710a759928d6"
                 },
                 {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "类型",
+                        "name": "type",
+                        "hiddenName": "type",
+                        "store": [
+                            "[\r",
+                            "    [\"\",\"\"],[\"1\",\"普通用户\"],[\"2\",\"会员\"],[\"9\",\"管理员\"]\r",
+                            "]"
+                        ]
+                    },
+                    "configAlternates": {
+                        "store": "array"
+                    },
+                    "designerId": "c08b53e4-d3ba-4f51-af4b-5485a883a60a"
+                },
+                {
                     "type": "Ext.form.field.Text",
                     "reference": {
                         "name": "items",
@@ -113,6 +136,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|anchor": "100%",
+                        "hidden": true,
                         "fieldLabel": "头像",
                         "name": "picUrl"
                     },
@@ -145,7 +169,7 @@
                                     "var form = this.down('form').getForm();\r",
                                     "var values = form.getValues();\r",
                                     "form.submit({\r",
-                                    "    url:\"/Home/UserAdd\",\r",
+                                    "    url:\"/User/UserAdd\",\r",
                                     "    params: values,\r",
                                     "    method:'POST',\r",
                                     "    scope: this,\r",
@@ -180,7 +204,26 @@
                         "scale": null,
                         "text": "重置"
                     },
-                    "designerId": "a7df78d5-0b09-4a92-a3c4-5a5eaac00a7e"
+                    "designerId": "a7df78d5-0b09-4a92-a3c4-5a5eaac00a7e",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onButtonClick1",
+                                "implHandler": [
+                                    "this.down('form').getForm().reset();"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "designerId": "b6a37214-0fbe-4979-8938-75617056a451"
+                        }
+                    ]
                 }
             ]
         }

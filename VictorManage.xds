@@ -181,29 +181,119 @@
                 "app/store/TypeStore.js"
             ],
             "className": "TypeStore"
+        },
+        "a0725f37-9db6-47e1-9c52-9b4e51786aee": {
+            "paths": [
+                "metadata/view/PortalAdv",
+                "app/view/override/PortalAdv.js",
+                "app/view/PortalAdv.js"
+            ],
+            "className": "PortalAdv"
+        },
+        "4ab8747a-6e9e-4b6e-83ed-676fe2ac88c7": {
+            "paths": [
+                "metadata/store/PortalAdvStore",
+                "app/store/override/PortalAdvStore.js",
+                "app/store/PortalAdvStore.js"
+            ],
+            "className": "PortalAdvStore"
+        },
+        "f57fc34c-e99a-45cf-84a4-4562b0378352": {
+            "paths": [
+                "metadata/controller/PortalController",
+                "app/controller/override/PortalController.js",
+                "app/controller/PortalController.js"
+            ],
+            "className": "PortalController"
+        },
+        "023ada5d-89e5-405d-b561-846885b6f432": {
+            "paths": [
+                "metadata/view/AdvAdd",
+                "app/view/override/AdvAdd.js",
+                "app/view/AdvAdd.js"
+            ],
+            "className": "AdvAdd"
+        },
+        "1b4a7694-c3f0-46ff-9d94-7648043362b8": {
+            "paths": [
+                "metadata/view/LoginWin",
+                "app/view/override/LoginWin.js",
+                "app/view/LoginWin.js"
+            ],
+            "className": "LoginWin"
+        },
+        "ff848346-ce14-49d3-b0d4-ffdeda4426d9": {
+            "paths": [
+                "metadata/view/TypeManagement",
+                "app/view/override/TypeManagement.js",
+                "app/view/TypeManagement.js"
+            ],
+            "className": "TypeManagement"
+        },
+        "454487ca-a047-4d24-974f-61dc879b06b1": {
+            "paths": [
+                "metadata/controller/TypeController",
+                "app/controller/override/TypeController.js",
+                "app/controller/TypeController.js"
+            ],
+            "className": "TypeController"
+        },
+        "62b52b72-2b53-41d4-85e3-2c9ea72218fc": {
+            "paths": [
+                "metadata/store/TypeFatherStore",
+                "app/store/override/TypeFatherStore.js",
+                "app/store/TypeFatherStore.js"
+            ],
+            "className": "TypeFatherStore"
+        },
+        "025f6ce7-0e06-4592-92c5-62c6f3e8e85c": {
+            "paths": [
+                "metadata/view/TypeAdd",
+                "app/view/override/TypeAdd.js",
+                "app/view/TypeAdd.js"
+            ],
+            "className": "TypeAdd"
+        },
+        "16f22b24-dc8d-4ad3-bac9-0e0a854f639b": {
+            "paths": [
+                "metadata/view/RecShopAdd",
+                "app/view/override/RecShopAdd.js",
+                "app/view/RecShopAdd.js"
+            ],
+            "className": "RecShopAdd"
         }
     },
     "viewOrderMap": {
         "view": [
+            "1b4a7694-c3f0-46ff-9d94-7648043362b8",
             "68902d2d-1603-42d0-a380-5dd2e7f463ea",
             "a7f66410-b969-46b4-bec9-f5f246aaaa0c",
             "bf6e2c3f-ff44-4374-83ce-f5173f4407db",
             "714701bb-b1de-485d-b72c-3e848e1d4a90",
+            "ff848346-ce14-49d3-b0d4-ffdeda4426d9",
+            "a0725f37-9db6-47e1-9c52-9b4e51786aee",
             "fae446fd-9117-4787-8c65-cf75911bd7ac",
             "f757834f-a571-4b4d-b3fc-ed2d9220e3e4",
-            "f86fff54-60ce-4ef1-81a1-073b9b32d4b5"
+            "f86fff54-60ce-4ef1-81a1-073b9b32d4b5",
+            "023ada5d-89e5-405d-b561-846885b6f432",
+            "025f6ce7-0e06-4592-92c5-62c6f3e8e85c",
+            "16f22b24-dc8d-4ad3-bac9-0e0a854f639b"
         ],
         "store": [
             "f700909a-3b45-4309-ba8c-8c4ce3efe64c",
             "4dfd32cf-8b6a-43b7-8163-41ae53a7b182",
+            "62b52b72-2b53-41d4-85e3-2c9ea72218fc",
             "c489892b-b282-42ed-874f-c70133345847",
             "03099c7c-a70d-4eae-84a3-bd9383b9076c",
-            "3c191be9-01c4-46d6-9f3a-4eb0c80551fb"
+            "3c191be9-01c4-46d6-9f3a-4eb0c80551fb",
+            "4ab8747a-6e9e-4b6e-83ed-676fe2ac88c7"
         ],
         "controller": [
             "3676a44f-ac77-40b1-bdb9-579faffd8a41",
             "54f8323c-204c-4343-8b76-a919c17f2363",
-            "b827f1e1-590b-4f48-b10e-ca1767d1559f"
+            "b827f1e1-590b-4f48-b10e-ca1767d1559f",
+            "f57fc34c-e99a-45cf-84a4-4562b0378352",
+            "454487ca-a047-4d24-974f-61dc879b06b1"
         ],
         "model": [
             "2e3fea0f-a577-4325-aabd-0bba752f06a7",

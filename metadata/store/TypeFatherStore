@@ -8,11 +8,11 @@
     "userConfig": {
         "autoLoad": null,
         "model": null,
-        "storeId": "RecShopStore",
-        "designer|userClassName": "RecShopStore",
-        "pageSize": 10
+        "storeId": "MyJsonStore",
+        "designer|userClassName": "TypeFatherStore",
+        "pageSize": null
     },
-    "designerId": "03099c7c-a70d-4eae-84a3-bd9383b9076c",
+    "designerId": "62b52b72-2b53-41d4-85e3-2c9ea72218fc",
     "cn": [
         {
             "type": "Ext.data.proxy.Ajax",
@@ -25,12 +25,12 @@
                 "actionMethods": [
                     "{create:\"POST\",read:\"POST\",update:\"POST\",destroy:\"POST\"}"
                 ],
-                "url": "/Shop/RecShopListGet"
+                "url": "/Manage/TypeFatherGet"
             },
             "configAlternates": {
                 "actionMethods": "object"
             },
-            "designerId": "10226916-b617-4933-8903-81cc8c69c2d3",
+            "designerId": "cadb0cdb-3030-47b4-a855-7db633f35545",
             "customConfigs": [
                 {
                     "group": "(Custom Properties)",
@@ -48,9 +48,9 @@
                     "codeClass": null,
                     "userConfig": {
                         "root": "data",
-                        "totalProperty": null
+                        "totalProperty": "totalN"
                     },
-                    "designerId": "8f2170ea-b24b-4eec-a966-ca3d62f44c55"
+                    "designerId": "a728b687-882c-488a-aeb0-4a8f78596f60"
                 }
             ]
         },
@@ -62,9 +62,9 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "id"
+                "name": "typeId"
             },
-            "designerId": "953e13c3-3b09-4fb0-a172-afb4ce2ec671"
+            "designerId": "11449600-22ec-4e4e-8357-b202f72c2a4e"
         },
         {
             "type": "Ext.data.Field",
@@ -74,9 +74,9 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "shopId"
+                "name": "typeName"
             },
-            "designerId": "901a3426-5283-4fbc-9402-16b1b9d00d11"
+            "designerId": "1ba7ff17-004b-49d7-9589-ffa93a80d211"
         },
         {
             "type": "Ext.data.Field",
@@ -86,9 +86,9 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "shopName"
+                "name": "fatherId"
             },
-            "designerId": "001e093d-7b29-48d6-b2cc-cfc471595375"
+            "designerId": "e5dbea8a-e792-46ea-bc23-21d39e65b531"
         },
         {
             "type": "Ext.data.Field",
@@ -98,45 +98,9 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "introduction"
+                "name": "note"
             },
-            "designerId": "edbe44c0-a912-4365-969e-2a9968dd1de1"
-        },
-        {
-            "type": "Ext.data.Field",
-            "reference": {
-                "name": "fields",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "name": "picurl"
-            },
-            "designerId": "27ebf964-5341-4fa9-b8a6-b1190bd2c0dd"
-        },
-        {
-            "type": "Ext.data.Field",
-            "reference": {
-                "name": "fields",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "name": "attention"
-            },
-            "designerId": "103dec20-cf5e-4004-88bf-dc908a3c0fe6"
-        },
-        {
-            "type": "Ext.data.Field",
-            "reference": {
-                "name": "fields",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "name": "type"
-            },
-            "designerId": "ea008e49-b242-4ead-adb0-0024a5fbbf15"
+            "designerId": "c5645f02-6335-4ec6-acee-4f6c0997b00b"
         }
     ]
 }

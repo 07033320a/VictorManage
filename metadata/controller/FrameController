@@ -7,7 +7,8 @@
     "codeClass": null,
     "userConfig": {
         "views": [
-            "MyViewport"
+            "MyViewport",
+            "LoginWin"
         ],
         "designer|userClassName": "FrameController"
     },
@@ -52,6 +53,22 @@
                     "        centerContiner.add(datagridPanel);\r",
                     "    }\r",
                     "}\r",
+                    "else if(menuId==\"m1_1_3\"){    \r",
+                    "\r",
+                    "    datagridPanel = MyApp.getApplication().getController(\"PortalController\").getPortaladv();\r",
+                    "    if (!datagridPanel) {\r",
+                    "        datagridPanel = Ext.create('MyApp.view.PortalAdv', { closable: true, title: '首页广告' });\r",
+                    "        centerContiner.add(datagridPanel);\r",
+                    "    }\r",
+                    "}\r",
+                    "else if(menuId==\"m1_1_4\"){    \r",
+                    "\r",
+                    "    datagridPanel = MyApp.getApplication().getController(\"TypeController\").getTypemanagement();\r",
+                    "    if (!datagridPanel) {\r",
+                    "        datagridPanel = Ext.create('MyApp.view.TypeManagement', { closable: true, title: '商铺类型' });\r",
+                    "        centerContiner.add(datagridPanel);\r",
+                    "    }\r",
+                    "}\r",
                     "else{    \r",
                     "    datagridPanel = centerContiner.getComponent('HomeTab');\r",
                     "}\r",
@@ -67,6 +84,19 @@
                 "designer|controlQuery": "treepanel"
             },
             "designerId": "47504fef-50f8-45ab-a58e-5d1a3ed94c2e"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "loginwin",
+                "selector": "loginwin"
+            },
+            "designerId": "dd0fe74b-743e-4dff-9465-e2f8e8497e19"
         }
     ]
 }

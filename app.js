@@ -31,7 +31,8 @@ Ext.application({
         'FrameController',
         'UserController',
         'ShopController',
-        'PortalController'
+        'PortalController',
+        'TypeController'
     ],
     name: 'MyApp',
 

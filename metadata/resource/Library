@@ -7,6 +7,7 @@
     "codeClass": null,
     "userConfig": {
         "designer|userClassName": "Library",
+        "basePath": "data/ext-4.2.1.883/",
         "theme": "gray"
     },
     "designerId": "9578b511-06c1-4e29-8e3e-b9d03e11f008"

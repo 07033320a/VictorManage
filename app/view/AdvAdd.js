@@ -126,16 +126,46 @@ Ext.define('MyApp.view.AdvAdd', {
     },
 
     processAdvType: function(config) {
+        var topNum = 0;
+        var midNum = 0;
+        var botNum = 0;
+        Ext.getStore('PortalAdvStore').each(function(item){
+
+            switch(item.get('advType')){
+                case '1':
+                topNum++;
+                break;
+                case '2':
+                midNum++;
+                break;
+                case '3':
+                botNum++;
+                break;
+                default:
+                break;
+
+            }
+        },this)
+
+        var arr = [];
+        if(topNum<6){
+            arr.push({"Name":"头部广告","Value":"1"});
+        }
+        if(midNum<2){
+            arr.push({"Name":"中部广告","Value":"2"});
+        }
+        if(botNum<6){
+            arr.push({"Name":"下部广告","Value":"3"});
+        }
+
+        //arr = arr.sort(function(a,b){return Number(a.Value)-Number(b.Value)});
         config.store = Ext.create('Ext.data.Store', {
             autoDestroy: true,
             fields: [
             {type: 'string', name: 'Name'},
             {type: 'string', name: 'Value'}
             ],
-            data: [
-            {"Name":"头部广告","Value":"1"},
-            {"Name":"中部广告","Value":"2"},
-            {"Name":"下部广告","Value":"3"}]
+            data: arr
         });
         return config;
     },

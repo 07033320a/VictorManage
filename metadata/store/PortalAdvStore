@@ -1,0 +1,170 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "storeId": "PortalAdvStore",
+        "designer|userClassName": "PortalAdvStore"
+    },
+    "designerId": "4ab8747a-6e9e-4b6e-83ed-676fe2ac88c7",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "/Home/AdvManageGet"
+            },
+            "designerId": "67198e55-b574-482c-8be5-6b289c46fbf3",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "result"
+                    },
+                    "designerId": "faaff80c-4148-4b70-b89c-8de9beb6f56a"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "advId"
+            },
+            "designerId": "cd0f30d7-3928-4235-9f39-808dcd7c5179"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "advertisingTitle"
+            },
+            "designerId": "c0dbbafb-c428-4f74-8738-8be4901b6d70"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "advType"
+            },
+            "designerId": "9f8756da-1ecc-4c7f-a33b-02e2d9e4f052"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "shopId"
+            },
+            "designerId": "676a30f2-1ceb-49b9-80d1-daa0ccc2fe9b"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "content"
+            },
+            "designerId": "28a35c9d-d39e-4b8b-bd9a-190da94b8ce0"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "pictureUrl"
+            },
+            "designerId": "03fdfb3e-e3cb-4adb-bac0-aea9245ea000"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "power"
+            },
+            "designerId": "5df4dafc-e159-48ca-84e9-c7fd66f00a23"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "addTime"
+            },
+            "designerId": "a9f1a067-65db-4584-8d89-94691e6786a5"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "endTime"
+            },
+            "designerId": "2aadf27b-1eca-4554-b969-6d94d7f1242d"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onJsonstoreLoad",
+                "implHandler": [
+                    "if(successful && records.length > 13){\r",
+                    "    Ext.ComponentQuery.query('portaladv button[itemId=newBtn]')[0].setDisabled(true);\r",
+                    "}else{\r",
+                    "    Ext.ComponentQuery.query('portaladv button[itemId=newBtn]')[0].setDisabled(false);\r",
+                    "}"
+                ],
+                "name": "load",
+                "scope": "me"
+            },
+            "designerId": "32649ace-fc91-4409-99e4-562adb5f144b"
+        }
+    ]
+}

@@ -61,6 +61,17 @@ Ext.define("Ext.locale.zh_CN.view.View", {
     override: "Ext.view.View",
     emptyText: ""
 });
+Ext.define('Ext.locale.zh_CN.grid.RowEditor', {
+	override: "Ext.grid.RowEditor",
+    //<locale>
+    saveBtnText  : '更新',
+    //</locale>
+    //<locale>
+    cancelBtnText: '取消',
+    //</locale>
+    //<locale>
+	errorsText: 'Errors'
+});
 
 Ext.define("Ext.locale.zh_CN.grid.plugin.DragDrop", {
     override: "Ext.grid.plugin.DragDrop",

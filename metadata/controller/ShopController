@@ -15,7 +15,8 @@
         "views": [
             "ShopManagement",
             "RecShop",
-            "ShopAdd"
+            "ShopAdd",
+            "RecShopAdd"
         ],
         "designer|userClassName": "ShopController"
     },
@@ -46,6 +47,19 @@
                 "selector": "recshop"
             },
             "designerId": "0467ca5e-7c4c-4759-bae3-03f79924cdf8"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "recshopadd",
+                "selector": "recshopadd"
+            },
+            "designerId": "26e0f5ad-52b7-408d-ae1d-c1abbc9a9b65"
         }
     ]
 }

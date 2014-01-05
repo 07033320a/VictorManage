@@ -66,6 +66,14 @@ Ext.define('MyApp.controller.FrameController', {
                 centerContiner.add(datagridPanel);
             }
         }
+        else if(menuId=="m1_1_4"){    
+
+            datagridPanel = MyApp.getApplication().getController("TypeController").getTypemanagement();
+            if (!datagridPanel) {
+                datagridPanel = Ext.create('MyApp.view.TypeManagement', { closable: true, title: '商铺类型' });
+                centerContiner.add(datagridPanel);
+            }
+        }
         else{    
             datagridPanel = centerContiner.getComponent('HomeTab');
         }

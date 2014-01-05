@@ -10,7 +10,7 @@
         "model": null,
         "storeId": "ShopListStore",
         "designer|userClassName": "ShopListStore",
-        "pageSize": 10
+        "pageSize": 20
     },
     "designerId": "c489892b-b282-42ed-874f-c70133345847",
     "cn": [
@@ -25,7 +25,7 @@
                 "actionMethods": [
                     "{create:\"POST\",read:\"POST\",update:\"POST\",destroy:\"POST\"}"
                 ],
-                "url": "/Home/ShopListGet"
+                "url": "/Manage/ShopList"
             },
             "configAlternates": {
                 "actionMethods": "object"
@@ -101,6 +101,30 @@
                 "name": "typeId"
             },
             "designerId": "b3559b5a-5088-4820-98d0-a11926957e38"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "typeIds"
+            },
+            "designerId": "8d082c54-f016-4bae-8173-23e570884e5f"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "typeNames"
+            },
+            "designerId": "da01178b-bf13-46d6-8302-ecae4c2a6670"
         },
         {
             "type": "Ext.data.Field",

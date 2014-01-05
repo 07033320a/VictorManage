@@ -124,6 +124,7 @@
                                             "var values = this.down('form').getForm().getValues();\r",
                                             "var store = this.down('grid').getStore();\r",
                                             "store.getProxy().extraParams = values;\r",
+                                            "store.currentPage = 1;\r",
                                             "store.load({\r",
                                             "    callback:function(r, option, success){\r",
                                             "        if(success){\r",
@@ -283,7 +284,7 @@
                                             "\r",
                                             "\r",
                                             "    Ext.Ajax.request( {\r",
-                                            "        url : '/Home/ShopDel',\r",
+                                            "        url : '/Shop/ShopDel',\r",
                                             "        method : 'post',\r",
                                             "        scope: this,\r",
                                             "        params : {\r",
@@ -358,7 +359,22 @@
                         "dataIndex": "shopName",
                         "text": "商铺名称"
                     },
-                    "designerId": "d4ab774a-1754-4815-b6dc-20bf87d6262c"
+                    "designerId": "d4ab774a-1754-4815-b6dc-20bf87d6262c",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "editor",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "name": "shopName",
+                                "allowBlank": false
+                            },
+                            "designerId": "17eab781-a5b8-4e6d-bc5b-2554bd4ee71a"
+                        }
+                    ]
                 },
                 {
                     "type": "Ext.grid.column.Column",
@@ -382,7 +398,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "width": 79,
+                        "width": 87,
                         "dataIndex": "username",
                         "text": "用户名"
                     },
@@ -396,10 +412,12 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "dataIndex": "address",
-                        "text": "地址"
+                        "hidden": true,
+                        "width": 79,
+                        "dataIndex": "typeIds",
+                        "text": "类型ids"
                     },
-                    "designerId": "6b8e5a63-838b-4635-8f92-41537920cb7d"
+                    "designerId": "6654714a-6362-4957-81e3-1069222afbab"
                 },
                 {
                     "type": "Ext.grid.column.Column",
@@ -409,6 +427,207 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "width": 79,
+                        "dataIndex": "typeNames",
+                        "text": "类型"
+                    },
+                    "designerId": "f36af31e-c9b5-4ac4-82e3-d701e7c80aca",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "renderer",
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "implHandler": [
+                                    "var max = 1;\r",
+                                    "if(value && value.split(',').length>1 ){\r",
+                                    "    metaData.tdAttr = 'data-qtip='+ value +'';\r",
+                                    "}\r",
+                                    "\r",
+                                    "return value;"
+                                ]
+                            },
+                            "designerId": "be6ade19-8690-4e63-b20f-b5e735d6b2a5"
+                        },
+                        {
+                            "type": "Ext.form.field.ComboBox",
+                            "reference": {
+                                "name": "editor",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": 150,
+                                "name": "typeid",
+                                "editable": false,
+                                "displayField": "typeName",
+                                "hiddenName": "typeid",
+                                "multiSelect": true,
+                                "store": "TypeStore",
+                                "valueField": "typeId"
+                            },
+                            "designerId": "2813d1e3-9983-47e8-b4b9-075966902a43"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "width": 79,
+                        "dataIndex": "typeId",
+                        "text": "模块"
+                    },
+                    "designerId": "dbcd2dcb-4533-484e-bffa-33bb6c8a8638",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "renderer",
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "implHandler": [
+                                    "var str = \"\";\r",
+                                    "value = String(value);\r",
+                                    "if(value.indexOf(\"1\")!=-1){\r",
+                                    "    str+= '天天美食,';\r",
+                                    "} if(value.indexOf('2')!=-1){\r",
+                                    "    str+= '玩乐生活,';\r",
+                                    "} if(value.indexOf('3')!=-1){\r",
+                                    "    str+= '魅力女人,';\r",
+                                    "} if(value.indexOf('4')!=-1){\r",
+                                    "    str+= '高调绅士,';\r",
+                                    "} if(value.indexOf('5')!=-1){\r",
+                                    "    str+= '快乐儿童,';\r",
+                                    "} if(value.indexOf('6')!=-1){\r",
+                                    "    str+= '手机数码,';\r",
+                                    "}\r",
+                                    "\r",
+                                    "metaData.tdAttr = 'data-qtip='+ str.substr(0,str.length-1) +'';\r",
+                                    "\r",
+                                    "return str.substr(0,str.length-1);\r",
+                                    "//1:天天美食,2:玩乐生活,3:魅力女人,4:高调绅士,5:快乐儿童,6:手机数码"
+                                ]
+                            },
+                            "designerId": "f890707c-31fb-4fd7-8040-a7a5b345535f"
+                        },
+                        {
+                            "type": "Ext.form.field.ComboBox",
+                            "reference": {
+                                "name": "editor",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "name": "models",
+                                "hiddenName": "models",
+                                "multiSelect": true,
+                                "store": [
+                                    "[[1,\"天天美食\"],[2,\"玩乐生活\"],[3,\"魅力女人\"],[4,\"高调绅士\"],[5,\"快乐儿童\"],[6,\"手机数码\"]]\r",
+                                    ""
+                                ]
+                            },
+                            "configAlternates": {
+                                "store": "array"
+                            },
+                            "designerId": "b1b0cefc-36be-46f2-89bc-a6a872d7bbb8"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "address",
+                        "text": "地址"
+                    },
+                    "designerId": "6b8e5a63-838b-4635-8f92-41537920cb7d",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "editor",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "name": "address"
+                            },
+                            "designerId": "23d1adf4-1e38-4314-9f61-16c491627254"
+                        },
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "renderer",
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "implHandler": [
+                                    "var max = 6;\r",
+                                    "if(value && value.length > max ){\r",
+                                    "    metaData.tdAttr = 'data-qtip='+ value +'';\r",
+                                    "}\r",
+                                    "\r",
+                                    "return value;"
+                                ]
+                            },
+                            "designerId": "29cb119c-db1d-4407-ace6-2da442bb87bd"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": true,
                         "width": 55,
                         "dataIndex": "areaId",
                         "text": "AreaId"
@@ -427,7 +646,24 @@
                         "dataIndex": "status",
                         "text": "状态"
                     },
-                    "designerId": "9d317796-6855-49fc-8fe7-4f4c3c430054"
+                    "designerId": "9d317796-6855-49fc-8fe7-4f4c3c430054",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.ComboBox",
+                            "reference": {
+                                "name": "editor",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "name": "status",
+                                "allowBlank": false,
+                                "editable": false,
+                                "hiddenName": "status"
+                            },
+                            "designerId": "e20ac21d-db13-421b-9a56-101ad147e67b"
+                        }
+                    ]
                 },
                 {
                     "type": "Ext.grid.column.Column",
@@ -437,6 +673,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "width": 115,
                         "dataIndex": "addtime",
                         "text": "添加时间"
                     },
@@ -477,6 +714,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "width": 115,
                         "dataIndex": "opentime",
                         "text": "开业时间"
                     },
@@ -517,6 +755,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "hidden": true,
                         "width": 70,
                         "dataIndex": "adduser",
                         "text": "添加者"
@@ -531,6 +770,206 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "dataIndex": "introduction",
+                        "text": "简介"
+                    },
+                    "designerId": "53b28cb9-1cb2-485b-8278-f1b22b9ef908",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "renderer",
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "implHandler": [
+                                    "if(value && value.length > max ){\r",
+                                    "\tmetaData.tdAttr = 'data-qtip=\"' + value + '\"';\r",
+                                    "}\r",
+                                    "return value;"
+                                ]
+                            },
+                            "designerId": "e8a47f6a-5bfe-48be-bbe1-59c0358d67b0"
+                        },
+                        {
+                            "type": "Ext.form.field.TextArea",
+                            "reference": {
+                                "name": "editor",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "name": "introducation"
+                            },
+                            "designerId": "18920997-ff8c-4a0c-9b6e-ead5a929522f"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "piclist",
+                        "text": "列表图片地址",
+                        "tooltip": null
+                    },
+                    "designerId": "7ced6fca-e032-4e10-b841-7ff51ef9f8fc",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "renderer",
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "implHandler": [
+                                    "var max = 1;\r",
+                                    "if(value && value.length > max ){\r",
+                                    "    metaData.tdAttr = 'data-qtip=\"<img width=200px height=100px src= '+ value +' />\"';\r",
+                                    "}\r",
+                                    "\r",
+                                    "return value.length > max ? value : null;"
+                                ]
+                            },
+                            "designerId": "8e392ab3-641f-4ad5-8b83-6df891b72813"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "picdetail",
+                        "text": "详细页图片地址"
+                    },
+                    "designerId": "836192c8-f66f-43cd-85ee-ecb26c868526",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "renderer",
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "implHandler": [
+                                    "var max = 1;\r",
+                                    "if(value && value.length > max ){\r",
+                                    "    metaData.tdAttr = 'data-qtip=\"<img width=200px height=100px src= '+ value +' />\"';\r",
+                                    "}\r",
+                                    "\r",
+                                    "return value.length > max ? value : null;"
+                                ]
+                            },
+                            "designerId": "ed93940b-1016-48a9-87a1-f0232383376c"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "piclogo",
+                        "text": "首页图片地址"
+                    },
+                    "designerId": "75e07076-770b-46d6-9609-ad11280fd7e7",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "renderer",
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "implHandler": [
+                                    "if(value && value.length > max ){\r",
+                                    "    metaData.tdAttr = 'data-qtip=\"<img width=200px height=100px src= '+ value +' />\"';\r",
+                                    "}\r",
+                                    "\r",
+                                    "return value;"
+                                ]
+                            },
+                            "designerId": "789d4549-7e20-4481-8808-c5f4d7ba64bb"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "weixincode",
+                        "text": "微信二维码"
+                    },
+                    "designerId": "feafe5ce-1c79-4d0d-9c3b-c273b3c6c6d0"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "width": 115,
                         "dataIndex": "modifytime",
                         "text": "修改时间"
                     },
@@ -573,35 +1012,9 @@
                     "userConfig": {
                         "width": 62,
                         "dataIndex": "modifyuser",
-                        "text": "修改者"
+                        "text": "修改者id"
                     },
                     "designerId": "26f917bc-4fb1-4c48-858b-ec745c765bae"
-                },
-                {
-                    "type": "Ext.grid.column.Column",
-                    "reference": {
-                        "name": "columns",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "dataIndex": "introduction",
-                        "text": "简介"
-                    },
-                    "designerId": "53b28cb9-1cb2-485b-8278-f1b22b9ef908"
-                },
-                {
-                    "type": "Ext.grid.column.Column",
-                    "reference": {
-                        "name": "columns",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "dataIndex": "weixincode",
-                        "text": "微信二维码"
-                    },
-                    "designerId": "feafe5ce-1c79-4d0d-9c3b-c273b3c6c6d0"
                 },
                 {
                     "type": "Ext.grid.column.Column",
@@ -657,44 +1070,63 @@
                     "designerId": "bb973e72-811f-4c78-a214-75c3aa9b7c4f"
                 },
                 {
-                    "type": "Ext.grid.column.Column",
+                    "type": "Ext.grid.plugin.RowEditing",
                     "reference": {
-                        "name": "columns",
+                        "name": "plugins",
                         "type": "array"
                     },
-                    "codeClass": null,
+                    "codeClass": "Ext.grid.plugin.RowEditing",
                     "userConfig": {
-                        "dataIndex": "piclist",
-                        "text": "列表图片地址",
-                        "tooltip": "{0}"
+                        "pluginId": null
                     },
-                    "designerId": "7ced6fca-e032-4e10-b841-7ff51ef9f8fc"
-                },
-                {
-                    "type": "Ext.grid.column.Column",
-                    "reference": {
-                        "name": "columns",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "dataIndex": "picdetail",
-                        "text": "详细页图片地址"
-                    },
-                    "designerId": "836192c8-f66f-43cd-85ee-ecb26c868526"
-                },
-                {
-                    "type": "Ext.grid.column.Column",
-                    "reference": {
-                        "name": "columns",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "dataIndex": "piclogo",
-                        "text": "首页图片地址"
-                    },
-                    "designerId": "75e07076-770b-46d6-9609-ad11280fd7e7"
+                    "designerId": "6bf0f875-7bb6-4fc7-a348-27dd19c7e3d2",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onRowEditingEdit",
+                                "implHandler": [
+                                    "debugger;\r",
+                                    "context.record.data.typeid = context.newValues.typeid;\r",
+                                    "context.record.data.models = '';\r",
+                                    "for(var i = 0 ; i < context.newValues.models.length; i ++){\r",
+                                    "    context.record.data.models+=String(context.newValues.models[i]);\r",
+                                    "}\r",
+                                    "if(context.newValues.typeid.length>0){\r",
+                                    "    Ext.Ajax.request({     \r",
+                                    "        url:'/Manage/ShopUpdate',  \r",
+                                    "        params:context.record.data,  \r",
+                                    "        scope: this,\r",
+                                    "        success: function(resp,opts) {   \r",
+                                    "            var respText = Ext.JSON.decode(resp.responseText);  \r",
+                                    "            if(respText.success){\r",
+                                    "                Ext.Msg.alert('提示','成功');\r",
+                                    "                this.down('grid').getStore().load();\r",
+                                    "            }else{\r",
+                                    "                Ext.Msg.alert('提示','失败');\r",
+                                    "            }\r",
+                                    "    \r",
+                                    "        },   \r",
+                                    "        failure: function(resp,opts) {   \r",
+                                    "            Ext.Msg.alert('提示','失败');\r",
+                                    "        }     \r",
+                                    "    });\r",
+                                    "}else{\r",
+                                    "\tExt.Msg.alert('提示','更新失败，请设置类型！');\r",
+                                    "}\r",
+                                    ""
+                                ],
+                                "name": "edit",
+                                "scope": "me"
+                            },
+                            "designerId": "a28845d6-332d-4954-880e-e3aaf3c191f0"
+                        }
+                    ]
                 }
             ]
         }

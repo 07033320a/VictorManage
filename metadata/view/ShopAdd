@@ -7,7 +7,7 @@
     "codeClass": null,
     "userConfig": {
         "height": 447,
-        "width": 374,
+        "width": 419,
         "designer|userClassName": "ShopAdd",
         "resizable": false,
         "layout": "fit",
@@ -27,6 +27,9 @@
             },
             "codeClass": null,
             "userConfig": {
+                "container|align": "stretch",
+                "autoScroll": true,
+                "layout": "vbox",
                 "bodyPadding": 10,
                 "title": ""
             },
@@ -40,9 +43,9 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "layout|anchor": "100%",
                         "fieldLabel": "店铺名",
                         "name": "shopname",
+                        "allowBlank": false,
                         "enforceMaxLength": true,
                         "maxLength": 128
                     },
@@ -56,11 +59,9 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "layout|anchor": "100%",
                         "fieldLabel": "用户",
                         "name": "userid",
-                        "allowBlank": false,
-                        "emptyText": "     <!--           请选择           --!>",
+                        "emptyText": "           <!--            请选择           --!>",
                         "editable": false,
                         "displayField": "username",
                         "hiddenName": "userid",
@@ -77,18 +78,48 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "layout|anchor": "100%",
+                        "layout|flex": null,
+                        "width": null,
                         "fieldLabel": "类型",
                         "name": "typeid",
                         "allowBlank": false,
-                        "emptyText": "     <!--           请选择           --!>",
+                        "emptyText": "           <!--            请选择           --!>",
                         "editable": false,
                         "displayField": "typeName",
                         "hiddenName": "typeid",
+                        "multiSelect": true,
                         "store": "TypeStore",
                         "valueField": "typeId"
                     },
                     "designerId": "22d0279b-fdc1-4838-b4f7-1067b7968df7"
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "width": null,
+                        "fieldLabel": "模块",
+                        "name": "modelId",
+                        "emptyText": "           <!--            请选择           --!>",
+                        "editable": false,
+                        "displayField": "typeName",
+                        "hiddenName": "modelId",
+                        "multiSelect": true,
+                        "store": [
+                            "[[1,\"天天美食\"],[2,\"玩乐生活\"],[3,\"魅力女人\"],[4,\"高调绅士\"],[5,\"快乐儿童\"],[6,\"手机数码\"]]\r",
+                            ""
+                        ],
+                        "valueField": null
+                    },
+                    "configAlternates": {
+                        "store": "array"
+                    },
+                    "designerId": "9c6574e7-3d1d-4b47-9d99-db51d1ab9822"
                 },
                 {
                     "type": "Ext.form.field.Text",
@@ -98,7 +129,6 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "layout|anchor": "100%",
                         "fieldLabel": "地址",
                         "name": "address",
                         "enforceMaxLength": true,
@@ -114,7 +144,6 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "layout|anchor": "100%",
                         "fieldLabel": "邮箱",
                         "name": "email",
                         "enforceMaxLength": true,
@@ -131,11 +160,11 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "layout|anchor": "100%",
                         "fieldLabel": "电话",
                         "name": "tel",
                         "enforceMaxLength": true,
-                        "maxLength": 11
+                        "maxLength": 11,
+                        "vtype": "alphanum"
                     },
                     "designerId": "df5db85f-e8d0-4243-934b-6ac5a17cd9ff"
                 },
@@ -147,6 +176,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "width": 385,
                         "fieldLabel": "商铺详细页图片",
                         "name": "shopdetailpic",
                         "buttonText": "浏览...",
@@ -162,6 +192,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "width": 385,
                         "fieldLabel": "商铺列表页图片",
                         "name": "shoplistpic",
                         "buttonText": "浏览...",
@@ -177,6 +208,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "width": 385,
                         "fieldLabel": "主页图片",
                         "name": "shoplogopic",
                         "buttonText": "浏览...",
@@ -192,7 +224,6 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "layout|anchor": "100%",
                         "fieldLabel": "简介",
                         "name": "introduction",
                         "enforceMaxLength": true,
@@ -201,103 +232,137 @@
                     "designerId": "a2415bde-4f4c-4b0b-a7f1-557414c839be"
                 },
                 {
-                    "type": "Ext.button.Button",
+                    "type": "Ext.container.Container",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "icon": "data/img/save.gif",
-                        "scale": null,
-                        "text": "确认"
+                        "layout|flex": 1,
+                        "layout": "column"
                     },
-                    "designerId": "665b6f82-9be5-4fe3-8241-7d521b48f9f9",
+                    "designerId": "634f4827-4c03-4662-89bb-717551f3a80e",
                     "cn": [
                         {
-                            "type": "basiceventbinding",
+                            "type": "Ext.button.Button",
                             "reference": {
-                                "name": "listeners",
+                                "name": "items",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "fn": "onButtonClick",
-                                "implHandler": [
-                                    "var form = this.down('form').getForm();\r",
-                                    "var values = form.getValues();\r",
-                                    "var UserFilePath = this.down('form [name=shopdetailpic]').getValue();\r",
-                                    "if(UserFilePath.length>0){\r",
-                                    "if(!CheckFileExt(UserFilePath,/.jpg|.gif|.png|.bmp/i))\r",
-                                    "    {\r",
-                                    "        Ext.Msg.alert('错误','商铺详细页图片-您上传的文件不是图片类型，请重新选择！');\r",
-                                    "        return;\r",
-                                    "    }\r",
-                                    "}\r",
-                                    "UserFilePath = this.down('form [name=shoplistpic]').getValue();\r",
-                                    "if(UserFilePath.length>0){\r",
-                                    "    if(!CheckFileExt(UserFilePath,/.jpg|.gif|.png|.bmp/i))\r",
-                                    "    {\r",
-                                    "        Ext.Msg.alert('错误','商铺列表页图片-您上传的文件不是图片类型，请重新选择！');\r",
-                                    "        return;\r",
-                                    "    }\r",
-                                    "}\r",
-                                    "UserFilePath = this.down('form [name=shoplogopic]').getValue();\r",
-                                    "if(UserFilePath.length>0){\r",
-                                    "    if(!CheckFileExt(UserFilePath,/.jpg|.gif|.png|.bmp/i))\r",
-                                    "    {\r",
-                                    "        Ext.Msg.alert('错误','主页图片-您上传的文件不是图片类型，请重新选择！');\r",
-                                    "        return;\r",
-                                    "    }\r",
-                                    "}\r",
-                                    "if(form.isValid()){\r",
-                                    "    form.submit({\r",
-                                    "        url:\"/Home/ShopAdd\",\r",
-                                    "        params: values,\r",
-                                    "        method:'POST',\r",
-                                    "        scope: this,\r",
-                                    "        success:function(f,action) {\r",
-                                    "            Ext.Msg.alert('提示:','成功');\r",
-                                    "            this.close();\r",
-                                    "            Ext.ComponentQuery.query('shoplist grid')[0].getStore().load();\r",
-                                    "        },\r",
-                                    "        failure:function(f,action){\r",
-                                    "            Ext.Msg.alert(f,action);\r",
-                                    "        }\r",
-                                    "    });\r",
-                                    "}\r",
-                                    "//判断是否是图片类型\r",
-                                    "function CheckFileExt(extstr,exg)\r",
-                                    "{\r",
-                                    "    var extstr = extstr.substring(extstr.lastIndexOf(\".\")).toLowerCase();\r",
-                                    "    if (extstr.match(exg) == null) {\r",
-                                    "        return false;\r",
-                                    "    }\r",
-                                    "    return true;\r",
-                                    "}\r",
-                                    ""
-                                ],
-                                "name": "click",
-                                "scope": "me"
+                                "icon": "data/img/save.gif",
+                                "scale": null,
+                                "text": "确认"
                             },
-                            "designerId": "fcd103ca-ee2d-4404-8af4-802713afc527"
+                            "designerId": "665b6f82-9be5-4fe3-8241-7d521b48f9f9",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onButtonClick",
+                                        "implHandler": [
+                                            "var form = this.down('form').getForm();\r",
+                                            "var values = form.getValues();\r",
+                                            "var UserFilePath = this.down('form [name=shopdetailpic]').getValue();\r",
+                                            "if(UserFilePath.length>0){\r",
+                                            "    if(!CheckFileExt(UserFilePath,/.jpg|.gif|.png|.bmp/i))\r",
+                                            "    {\r",
+                                            "        Ext.Msg.alert('错误','商铺详细页图片-您上传的文件不是图片类型，请重新选择！');\r",
+                                            "        return;\r",
+                                            "    }\r",
+                                            "}\r",
+                                            "UserFilePath = this.down('form [name=shoplistpic]').getValue();\r",
+                                            "if(UserFilePath.length>0){\r",
+                                            "    if(!CheckFileExt(UserFilePath,/.jpg|.gif|.png|.bmp/i))\r",
+                                            "    {\r",
+                                            "        Ext.Msg.alert('错误','商铺列表页图片-您上传的文件不是图片类型，请重新选择！');\r",
+                                            "        return;\r",
+                                            "    }\r",
+                                            "}\r",
+                                            "UserFilePath = this.down('form [name=shoplogopic]').getValue();\r",
+                                            "if(UserFilePath.length>0){\r",
+                                            "    if(!CheckFileExt(UserFilePath,/.jpg|.gif|.png|.bmp/i))\r",
+                                            "    {\r",
+                                            "        Ext.Msg.alert('错误','主页图片-您上传的文件不是图片类型，请重新选择！');\r",
+                                            "        return;\r",
+                                            "    }\r",
+                                            "}\r",
+                                            "if(form.isValid()){\r",
+                                            "    form.submit({\r",
+                                            "        url:\"/Shop/ShopAdd\",\r",
+                                            "        params: values,\r",
+                                            "        method:'POST',\r",
+                                            "        scope: this,\r",
+                                            "        success:function(f,action) {\r",
+                                            "            Ext.Msg.alert('提示:','成功');\r",
+                                            "            this.close();\r",
+                                            "            Ext.ComponentQuery.query('shoplist grid')[0].getStore().load();\r",
+                                            "        },\r",
+                                            "        failure:function(f,action){\r",
+                                            "            Ext.Msg.alert(f,action);\r",
+                                            "        }\r",
+                                            "    });\r",
+                                            "}\r",
+                                            "//判断是否是图片类型\r",
+                                            "function CheckFileExt(extstr,exg)\r",
+                                            "{\r",
+                                            "    var extstr = extstr.substring(extstr.lastIndexOf(\".\")).toLowerCase();\r",
+                                            "    if (extstr.match(exg) == null) {\r",
+                                            "        return false;\r",
+                                            "    }\r",
+                                            "    return true;\r",
+                                            "}\r",
+                                            ""
+                                        ],
+                                        "name": "click",
+                                        "scope": "me"
+                                    },
+                                    "designerId": "fcd103ca-ee2d-4404-8af4-802713afc527"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "margin": "0 0 0 20",
+                                "icon": "data/img/reset.gif",
+                                "scale": null,
+                                "text": "重置"
+                            },
+                            "designerId": "b1126f20-5153-41e8-ad99-69ddaf07a023",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onButtonClick1",
+                                        "implHandler": [
+                                            "this.up('form').getForm().reset();"
+                                        ],
+                                        "name": "click",
+                                        "scope": "me"
+                                    },
+                                    "designerId": "f11cc9bb-c798-430b-8b25-3e68291e42dd"
+                                }
+                            ]
                         }
                     ]
-                },
-                {
-                    "type": "Ext.button.Button",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "margin": "0 0 0 20",
-                        "icon": "data/img/reset.gif",
-                        "scale": null,
-                        "text": "重置"
-                    },
-                    "designerId": "b1126f20-5153-41e8-ad99-69ddaf07a023"
                 }
             ]
         }

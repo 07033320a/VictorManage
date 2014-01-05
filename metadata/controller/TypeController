@@ -1,0 +1,48 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "stores": [
+            "TypeFatherStore",
+            "TypeStore"
+        ],
+        "views": [
+            "TypeManagement",
+            "TypeAdd"
+        ],
+        "designer|userClassName": "TypeController"
+    },
+    "designerId": "454487ca-a047-4d24-974f-61dc879b06b1",
+    "cn": [
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "typemanagement",
+                "selector": "typemanagement"
+            },
+            "designerId": "4d55e9ae-5a2c-4ad1-933f-5a5dc8974609"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "typeadd",
+                "selector": "typeadd"
+            },
+            "designerId": "3adee75d-498f-42a9-886a-5cde19d5fe3d"
+        }
+    ]
+}

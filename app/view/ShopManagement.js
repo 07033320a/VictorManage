@@ -155,7 +155,7 @@ Ext.define('MyApp.view.ShopManagement', {
                         },
                         {
                             xtype: 'gridcolumn',
-                            width: 79,
+                            width: 87,
                             dataIndex: 'username',
                             text: '用户名'
                         },
@@ -193,6 +193,74 @@ Ext.define('MyApp.view.ShopManagement', {
                         },
                         {
                             xtype: 'gridcolumn',
+                            renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                                var str = "";
+                                value = String(value);
+                                if(value.indexOf("1")!=-1){
+                                    str+= '天天美食,';
+                                } if(value.indexOf('2')!=-1){
+                                    str+= '玩乐生活,';
+                                } if(value.indexOf('3')!=-1){
+                                    str+= '魅力女人,';
+                                } if(value.indexOf('4')!=-1){
+                                    str+= '高调绅士,';
+                                } if(value.indexOf('5')!=-1){
+                                    str+= '快乐儿童,';
+                                } if(value.indexOf('6')!=-1){
+                                    str+= '手机数码,';
+                                }
+
+                                metaData.tdAttr = 'data-qtip='+ str.substr(0,str.length-1) +'';
+
+                                return str.substr(0,str.length-1);
+                                //1:天天美食,2:玩乐生活,3:魅力女人,4:高调绅士,5:快乐儿童,6:手机数码
+                            },
+                            width: 79,
+                            dataIndex: 'typeId',
+                            text: '模块',
+                            editor: {
+                                xtype: 'combobox',
+                                name: 'models',
+                                hiddenName: 'models',
+                                multiSelect: true,
+                                store: [
+                                    [
+                                        1,
+                                        '天天美食'
+                                    ],
+                                    [
+                                        2,
+                                        '玩乐生活'
+                                    ],
+                                    [
+                                        3,
+                                        '魅力女人'
+                                    ],
+                                    [
+                                        4,
+                                        '高调绅士'
+                                    ],
+                                    [
+                                        5,
+                                        '快乐儿童'
+                                    ],
+                                    [
+                                        6,
+                                        '手机数码'
+                                    ]
+                                ]
+                            }
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                                var max = 6;
+                                if(value && value.length > max ){
+                                    metaData.tdAttr = 'data-qtip='+ value +'';
+                                }
+
+                                return value;
+                            },
                             dataIndex: 'address',
                             text: '地址',
                             editor: {
@@ -226,6 +294,7 @@ Ext.define('MyApp.view.ShopManagement', {
 
                                 return Ext.Date.format(new Date(Number(value.split('(')[1].split(')')[0])),'Y-m-d H:i')
                             },
+                            width: 115,
                             dataIndex: 'addtime',
                             text: '添加时间'
                         },
@@ -235,11 +304,13 @@ Ext.define('MyApp.view.ShopManagement', {
 
                                 return Ext.Date.format(new Date(Number(value.split('(')[1].split(')')[0])),'Y-m-d H:i')
                             },
+                            width: 115,
                             dataIndex: 'opentime',
                             text: '开业时间'
                         },
                         {
                             xtype: 'gridcolumn',
+                            hidden: true,
                             width: 70,
                             dataIndex: 'adduser',
                             text: '添加者'
@@ -247,9 +318,10 @@ Ext.define('MyApp.view.ShopManagement', {
                         {
                             xtype: 'gridcolumn',
                             renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
-                                var max = 15;
-                                metaData.tdAttr = 'data-qtip="' + value + '"';
-                                return value.length < max ? value : value.substring(0, max - 3) + '...';
+                                if(value && value.length > max ){
+                                    metaData.tdAttr = 'data-qtip="' + value + '"';
+                                }
+                                return value;
                             },
                             dataIndex: 'introduction',
                             text: '简介',
@@ -262,52 +334,39 @@ Ext.define('MyApp.view.ShopManagement', {
                             xtype: 'gridcolumn',
                             renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
                                 var max = 1;
-                                if(value.length > max ){
+                                if(value && value.length > max ){
                                     metaData.tdAttr = 'data-qtip="<img width=200px height=100px src= '+ value +' />"';
                                 }
 
                                 return value.length > max ? value : null;
                             },
                             dataIndex: 'piclist',
-                            text: '列表图片地址',
-                            editor: {
-                                xtype: 'textfield',
-                                name: 'piclist'
-                            }
+                            text: '列表图片地址'
                         },
                         {
                             xtype: 'gridcolumn',
                             renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
                                 var max = 1;
-                                if(value.length > max ){
+                                if(value && value.length > max ){
                                     metaData.tdAttr = 'data-qtip="<img width=200px height=100px src= '+ value +' />"';
                                 }
 
                                 return value.length > max ? value : null;
                             },
                             dataIndex: 'picdetail',
-                            text: '详细页图片地址',
-                            editor: {
-                                xtype: 'textfield',
-                                name: 'picdetail'
-                            }
+                            text: '详细页图片地址'
                         },
                         {
                             xtype: 'gridcolumn',
                             renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
-                                var max = 1;
-                                if(value.length > max ){
+                                if(value && value.length > max ){
                                     metaData.tdAttr = 'data-qtip="<img width=200px height=100px src= '+ value +' />"';
                                 }
 
-                                return value.length > max ? value : null;
+                                return value;
                             },
                             dataIndex: 'piclogo',
-                            text: '首页图片地址',
-                            editor: {
-                                xtype: 'textfield',
-                                name: 'piclogo'
-                            }
+                            text: '首页图片地址'
                         },
                         {
                             xtype: 'gridcolumn',
@@ -320,6 +379,7 @@ Ext.define('MyApp.view.ShopManagement', {
 
                                 return Ext.Date.format(new Date(Number(value.split('(')[1].split(')')[0])),'Y-m-d H:i')
                             },
+                            width: 115,
                             dataIndex: 'modifytime',
                             text: '修改时间'
                         },
@@ -372,6 +432,7 @@ Ext.define('MyApp.view.ShopManagement', {
         var values = this.down('form').getForm().getValues();
         var store = this.down('grid').getStore();
         store.getProxy().extraParams = values;
+        store.currentPage = 1;
         store.load({
             callback:function(r, option, success){
                 if(success){
@@ -415,24 +476,33 @@ Ext.define('MyApp.view.ShopManagement', {
     onRowEditingEdit: function(editor, context, eOpts) {
         debugger;
         context.record.data.typeid = context.newValues.typeid;
-        Ext.Ajax.request({     
-            url:'/Manage/ShopUpdate',  
-            params:context.record.data,  
-            scope: this,
-            success: function(resp,opts) {   
-                var respText = Ext.JSON.decode(resp.responseText);  
-                if(respText.success){
-                    Ext.Msg.alert('提示','成功');
-                    this.down('grid').getStore().load();
-                }else{
-                    Ext.Msg.alert('提示','失败');
-                }
+        context.record.data.models = '';
+        for(var i = 0 ; i < context.newValues.models.length; i ++){
+            context.record.data.models+=String(context.newValues.models[i]);
+        }
+        if(context.newValues.typeid.length>0){
+            Ext.Ajax.request({     
+                url:'/Manage/ShopUpdate',  
+                params:context.record.data,  
+                scope: this,
+                success: function(resp,opts) {   
+                    var respText = Ext.JSON.decode(resp.responseText);  
+                    if(respText.success){
+                        Ext.Msg.alert('提示','成功');
+                        this.down('grid').getStore().load();
+                    }else{
+                        Ext.Msg.alert('提示','失败');
+                    }
 
-            },   
-            failure: function(resp,opts) {   
-                Ext.Msg.alert('提示','失败');
-            }     
-        });
+                },   
+                failure: function(resp,opts) {   
+                    Ext.Msg.alert('提示','失败');
+                }     
+            });
+        }else{
+            Ext.Msg.alert('提示','更新失败，请设置类型！');
+        }
+
     }
 
 });

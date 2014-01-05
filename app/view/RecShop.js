@@ -135,6 +135,14 @@ Ext.define('MyApp.view.RecShop', {
                                 },
                                 {
                                     xtype: 'gridcolumn',
+                                    renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                                        var max = 10;
+                                        if(value && value.length > max ){
+                                            metaData.tdAttr = 'data-qtip='+ value +'';
+                                        }
+
+                                        return value;
+                                    },
                                     width: 216,
                                     dataIndex: 'introduction',
                                     text: '商铺介绍'
@@ -185,7 +193,22 @@ Ext.define('MyApp.view.RecShop', {
 
 
                                             },
-                                            icon: 'data/img/delete2.gif'
+                                            icon: 'data/img/delete2.gif',
+                                            tooltip: '删除'
+                                        },
+                                        {
+                                            handler: function(view, rowIndex, colIndex, item, e, record, row) {
+                                                var datagridPanel;
+                                                datagridPanel = MyApp.getApplication().getController("ShopController").getRecshopadd();
+                                                if (!datagridPanel) {
+                                                    datagridPanel= Ext.create('MyApp.view.RecShopAdd', { closable: true, title: '修改推荐商铺' }).show();
+                                                    var form = datagridPanel.down('form').getForm();
+                                                    form.setValues(record.raw);
+
+                                                }
+                                            },
+                                            icon: 'data/img/forward.png',
+                                            tooltip: '修改'
                                         }
                                     ]
                                 }

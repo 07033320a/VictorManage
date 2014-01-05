@@ -45,6 +45,7 @@ Ext.define('MyApp.view.PortalAdv', {
 
 
                                     },
+                                    disabled: true,
                                     itemId: 'newBtn',
                                     icon: 'data/img/add1.png',
                                     text: '新建'
@@ -88,8 +89,7 @@ Ext.define('MyApp.view.PortalAdv', {
                             text: '广告标题',
                             editor: {
                                 xtype: 'textfield',
-                                name: 'advertisingTitle',
-                                allowBlank: false
+                                name: 'advertisingTitle'
                             }
                         },
                         {
@@ -118,6 +118,13 @@ Ext.define('MyApp.view.PortalAdv', {
                         },
                         {
                             xtype: 'gridcolumn',
+                            renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                                if(value == 0){
+                                    return null;
+                                }else{
+                                    return value;
+                                }
+                            },
                             width: 100,
                             dataIndex: 'shopId',
                             text: '关联店铺',

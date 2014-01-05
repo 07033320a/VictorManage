@@ -49,7 +49,13 @@ Ext.define('MyApp.view.LoginWin', {
                             fieldLabel: '密码',
                             name: 'password',
                             inputType: 'password',
-                            allowBlank: false
+                            allowBlank: false,
+                            listeners: {
+                                specialkey: {
+                                    fn: me.onTextfieldSpecialkey,
+                                    scope: me
+                                }
+                            }
                         },
                         {
                             xtype: 'container',
@@ -73,10 +79,22 @@ Ext.define('MyApp.view.LoginWin', {
                         }
                     ]
                 }
-            ]
+            ],
+            listeners: {
+                show: {
+                    fn: me.onWindowShow,
+                    scope: me
+                }
+            }
         });
 
         me.callParent(arguments);
+    },
+
+    onTextfieldSpecialkey: function(field, e, eOpts) {
+        if (e.getKey() == Ext.EventObject.ENTER) {
+            field.up('form').down('button').fireHandler();
+        }
     },
 
     onButtonClick: function(button, e, eOpts) {
@@ -96,6 +114,14 @@ Ext.define('MyApp.view.LoginWin', {
                 }
             });
         }
+    },
+
+    onWindowShow: function(component, eOpts) {
+        var textField = component.down('textfield[name=username]');
+
+        textField.focus();
+
+        textField.focus(false, 100);
     }
 
 });

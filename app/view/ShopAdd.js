@@ -52,7 +52,6 @@ Ext.define('MyApp.view.ShopAdd', {
                             xtype: 'combobox',
                             fieldLabel: '用户',
                             name: 'userid',
-                            allowBlank: false,
                             emptyText: '           <!--            请选择           --!>',
                             editable: false,
                             displayField: 'username',
@@ -72,6 +71,42 @@ Ext.define('MyApp.view.ShopAdd', {
                             multiSelect: true,
                             store: 'TypeStore',
                             valueField: 'typeId'
+                        },
+                        {
+                            xtype: 'combobox',
+                            fieldLabel: '模块',
+                            name: 'modelId',
+                            emptyText: '           <!--            请选择           --!>',
+                            editable: false,
+                            displayField: 'typeName',
+                            hiddenName: 'modelId',
+                            multiSelect: true,
+                            store: [
+                                [
+                                    1,
+                                    '天天美食'
+                                ],
+                                [
+                                    2,
+                                    '玩乐生活'
+                                ],
+                                [
+                                    3,
+                                    '魅力女人'
+                                ],
+                                [
+                                    4,
+                                    '高调绅士'
+                                ],
+                                [
+                                    5,
+                                    '快乐儿童'
+                                ],
+                                [
+                                    6,
+                                    '手机数码'
+                                ]
+                            ]
                         },
                         {
                             xtype: 'textfield',

@@ -1,0 +1,143 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "height": 133,
+        "width": 374,
+        "designer|userClassName": "RecShopAdd",
+        "designer|userAlias": "recshopadd",
+        "resizable": false,
+        "layout": "fit",
+        "title": "推荐商铺修改",
+        "modal": true
+    },
+    "configAlternates": {
+        "resizable": "boolean"
+    },
+    "designerId": "16f22b24-dc8d-4ad3-bac9-0e0a854f639b",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bodyPadding": 10,
+                "title": ""
+            },
+            "designerId": "bef85aa1-81dc-45f3-855c-cad6f2236130",
+            "cn": [
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "类型",
+                        "name": "type",
+                        "allowBlank": false,
+                        "emptyText": null,
+                        "editable": false,
+                        "hiddenName": "type",
+                        "store": [
+                            "[\r",
+                            "    [\"1\",\"胜利特价\"],[\"2\",\"新店推荐\"],[\"3\",\"会员商家\"],[\"4\",\"品牌推荐\"]\r",
+                            "]"
+                        ]
+                    },
+                    "configAlternates": {
+                        "store": "array"
+                    },
+                    "designerId": "26551faf-87b3-4ace-9668-2da269fb976f"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "icon": "data/img/save.gif",
+                        "scale": null,
+                        "text": "确认"
+                    },
+                    "designerId": "faf01ad4-a949-44f9-b108-80189f0b05a5",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onButtonClick",
+                                "implHandler": [
+                                    "var form = this.down('form').getForm();\r",
+                                    "var values = form.getValues();\r",
+                                    "if(form.isValid()){\r",
+                                    "    form.submit({\r",
+                                    "        url:'/Manage/RecShopUpdate',\r",
+                                    "        params: values,\r",
+                                    "        method:'POST',\r",
+                                    "        scope: this,\r",
+                                    "        success:function(f,action) {\r",
+                                    "            Ext.Msg.alert('提示:','成功');\r",
+                                    "            this.close();\r",
+                                    "            Ext.ComponentQuery.query('recshop')[0].down('grid').getStore().load();\r",
+                                    "        },\r",
+                                    "        failure:function(f,action){\r",
+                                    "            Ext.Msg.alert(f,action);\r",
+                                    "        }\r",
+                                    "    });\r",
+                                    "}"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "designerId": "cc99c8b8-ad60-4309-b03f-b783ffb74352"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "Label",
+                        "name": "id"
+                    },
+                    "designerId": "a2908489-8616-4833-8880-7e4de809be13"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "Label",
+                        "name": "shopId"
+                    },
+                    "designerId": "8eba0cc1-deeb-4606-92d4-3fa28c14f66b"
+                }
+            ]
+        }
+    ]
+}

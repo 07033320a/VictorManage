@@ -25,7 +25,7 @@
                 "actionMethods": [
                     "{create:\"POST\",read:\"POST\",update:\"POST\",destroy:\"POST\"}"
                 ],
-                "url": "/Home/UserListGet"
+                "url": "/Manage/UserListGet"
             },
             "configAlternates": {
                 "actionMethods": "object"

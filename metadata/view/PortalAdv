@@ -1,0 +1,650 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "height": 372,
+        "id": null,
+        "itemId": null,
+        "margin": null,
+        "width": 800,
+        "designer|userClassName": "PortalAdv",
+        "designer|userAlias": "portaladv",
+        "layout": "border",
+        "title": "首页广告"
+    },
+    "designerId": "a0725f37-9db6-47e1-9c52-9b4e51786aee",
+    "cn": [
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|region": "center",
+                "dock": null,
+                "id": null,
+                "itemId": null,
+                "title": null,
+                "store": "PortalAdvStore"
+            },
+            "designerId": "f405443a-6d87-4ad5-a8bd-d1883abafc33",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "top",
+                        "height": null
+                    },
+                    "designerId": "c5f00f65-2d10-4d66-b110-6eaa900174ce",
+                    "cn": [
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "disabled": true,
+                                "itemId": "newBtn",
+                                "icon": "data/img/add1.png",
+                                "text": "新建"
+                            },
+                            "designerId": "ce3da83a-dbda-476d-9758-2e95cfc98427",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "handler",
+                                        "designer|params": [
+                                            "button",
+                                            "event"
+                                        ],
+                                        "implHandler": [
+                                            "Ext.create('MyApp.view.AdvAdd', { closable: true, title: '新建广告' }).show();\r",
+                                            "\r",
+                                            ""
+                                        ]
+                                    },
+                                    "designerId": "d70fa6e8-7217-42bf-aff4-6b612e13ac2f"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "layout|margins": "0 10 0 10",
+                                "icon": "data/img/delete1.png",
+                                "text": "删除"
+                            },
+                            "designerId": "9967659a-08a4-4dba-95ff-8b383b08b4b6",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onButtonClick",
+                                        "implHandler": [
+                                            "var grid =  this.down('grid');\r",
+                                            "\r",
+                                            "var id = '';\r",
+                                            "if(grid.getSelectionModel().selected.length>0){\r",
+                                            "    grid.getSelectionModel().selected.each(function(item){\r",
+                                            "        id+= item.get('advId');\r",
+                                            "    });\r",
+                                            "\r",
+                                            "\r",
+                                            "    Ext.Ajax.request( {\r",
+                                            "        url : '/Home/AdvDel',\r",
+                                            "        method : 'post',\r",
+                                            "        scope: this,\r",
+                                            "        params : {\r",
+                                            "            id : id\r",
+                                            "        },\r",
+                                            "        success : function(response, options) {\r",
+                                            "            this.down('grid').getStore().load();\r",
+                                            "        },\r",
+                                            "        failure : function() {\r",
+                                            "\r",
+                                            "        }\r",
+                                            "    });\r",
+                                            "\r",
+                                            "}else{\r",
+                                            "    Ext.Msg.alert('提示','请选择记录！');\r",
+                                            "}"
+                                        ],
+                                        "name": "click",
+                                        "scope": "me"
+                                    },
+                                    "designerId": "b724d75b-f98f-4fea-a655-8088c03de3be"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "id": null,
+                                "itemId": null,
+                                "margin": null,
+                                "icon": "data/img/zoom.gif",
+                                "text": "查询"
+                            },
+                            "designerId": "060f796a-2138-4dcc-b04e-bbb503189970",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onSearchBtnClick",
+                                        "implHandler": [
+                                            "var store = this.down('grid').getStore();\r",
+                                            "store.load({\r",
+                                            "    callback:function(r, option, success){\r",
+                                            "        if(success){\r",
+                                            "        }else{\r",
+                                            "            Ext.Msg.alert('错误',option.getError().statusText);\r",
+                                            "        }\r",
+                                            "\r",
+                                            "    }});"
+                                        ],
+                                        "name": "click",
+                                        "scope": "me"
+                                    },
+                                    "designerId": "ce4e573a-08c2-4e95-91f7-4ac25315112c"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.View",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "59cd270c-222c-4bb3-baa2-a5ef0344295f"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": true,
+                        "dataIndex": "advId",
+                        "text": "AdvId"
+                    },
+                    "designerId": "aa4a6f9d-99d7-4f75-aeee-3b663c768816"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "advertisingTitle",
+                        "text": "广告标题"
+                    },
+                    "designerId": "dbb418af-38d4-4238-9371-4ca0d8264013",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "editor",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "name": "advertisingTitle"
+                            },
+                            "designerId": "f7646db7-a061-4a0e-a3ed-950619624602"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "width": 75,
+                        "dataIndex": "advType",
+                        "text": "广告类型"
+                    },
+                    "designerId": "609e58e4-f2fc-4500-bf7a-25ea0389fa1c",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "renderer",
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "implHandler": [
+                                    "if(value == '1'){\r",
+                                    "    return '头部广告';\r",
+                                    "}else if(value =='2'){\r",
+                                    "    return '中间广告';\r",
+                                    "}else if(value == '3'){\r",
+                                    "    return  '下部广告';\r",
+                                    "}"
+                                ]
+                            },
+                            "designerId": "8fbb87be-1444-4a3a-8ae5-d1e36b8d3993"
+                        },
+                        {
+                            "type": "Ext.form.field.ComboBox",
+                            "reference": {
+                                "name": "editor",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "name": "advType",
+                                "allowBlank": false,
+                                "editable": false,
+                                "displayField": "Name",
+                                "hiddenName": "advType",
+                                "valueField": "Value"
+                            },
+                            "designerId": "f7b43797-6f8c-4fa8-bc86-4af47d821a94",
+                            "cn": [
+                                {
+                                    "type": "processcfgfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "processAdvType",
+                                        "designer|params": [
+                                            "config"
+                                        ],
+                                        "implHandler": [
+                                            "config.store = Ext.create('Ext.data.Store', {\r",
+                                            "    autoDestroy: true,\r",
+                                            "    fields: [\r",
+                                            "    {type: 'string', name: 'Name'},\r",
+                                            "    {type: 'string', name: 'Value'}\r",
+                                            "    ],\r",
+                                            "    data: [\r",
+                                            "    {\"Name\":\"头部广告\",\"Value\":\"1\"},\r",
+                                            "    {\"Name\":\"中部广告\",\"Value\":\"2\"},\r",
+                                            "    {\"Name\":\"下部广告\",\"Value\":\"3\"}]\r",
+                                            "});\r",
+                                            "return config;"
+                                        ]
+                                    },
+                                    "designerId": "bcab0057-f979-436c-b7f1-70eef1173a28"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "width": 100,
+                        "dataIndex": "shopId",
+                        "text": "关联店铺"
+                    },
+                    "designerId": "5160b452-215a-4a73-a8a8-8452de8ea8f4",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.ComboBox",
+                            "reference": {
+                                "name": "editor",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": 200,
+                                "name": "shopId",
+                                "matchFieldWidth": false,
+                                "displayField": "shopName",
+                                "hiddenName": "shopId",
+                                "pageSize": 10,
+                                "store": "ShopListStore",
+                                "valueField": "shopId"
+                            },
+                            "designerId": "c46548f3-fb11-42c5-a7c6-49926d5f349c"
+                        },
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "renderer",
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "implHandler": [
+                                    "if(value == 0){\r",
+                                    "\treturn null;\r",
+                                    "}else{\r",
+                                    "\treturn value;\r",
+                                    "}"
+                                ]
+                            },
+                            "designerId": "3bac59f5-446f-4f51-865c-4d2830114c86"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "width": 46,
+                        "dataIndex": "power",
+                        "text": "权值"
+                    },
+                    "designerId": "f58bcd68-2078-4c1f-9545-7c4c6c113ea4",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Number",
+                            "reference": {
+                                "name": "editor",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "name": "power",
+                                "allowBlank": false
+                            },
+                            "designerId": "07cc22da-79b4-4433-abbf-aea3c5c080f4"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "width": 104,
+                        "dataIndex": "content",
+                        "text": "广告体"
+                    },
+                    "designerId": "ac92f94d-5727-4744-b971-dae1db10813f",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "editor",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "name": "content"
+                            },
+                            "designerId": "ad985b3e-f03e-4ced-98fe-e105403556fb"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "width": 150,
+                        "dataIndex": "pictureUrl",
+                        "text": "广告图片url"
+                    },
+                    "designerId": "8fa7a748-06ee-435c-96a4-c8c254b648c4",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "renderer",
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "implHandler": [
+                                    "var max = 1;\r",
+                                    "if(value.length > max ){\r",
+                                    "\tmetaData.tdAttr = 'data-qtip=\"<img width=200px height=100px src= '+ value +' />\"';\r",
+                                    "}\r",
+                                    "\r",
+                                    "return value.length > max ? value : null;"
+                                ]
+                            },
+                            "designerId": "558f62f0-7890-4cae-b2d8-4399a4dff61c"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": true,
+                        "dataIndex": "power",
+                        "text": "Power"
+                    },
+                    "designerId": "16c8375a-52aa-402a-80ef-d24bb7f057da"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "width": 120,
+                        "dataIndex": "addTime",
+                        "text": "开始时间"
+                    },
+                    "designerId": "9cc43c4c-e64b-493b-9e9f-df00494ecdaa",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "renderer",
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "implHandler": [
+                                    "\r",
+                                    "return Number(value.split('(')[1].split(')')[0])>0?Ext.Date.format(new Date(Number(value.split('(')[1].split(')')[0])),'Y-m-d H:i'):null;"
+                                ]
+                            },
+                            "designerId": "f0b413c6-ffaa-403f-8152-770279cf61f7"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "width": 120,
+                        "dataIndex": "endTime",
+                        "text": "结束时间"
+                    },
+                    "designerId": "901b7680-f440-40b3-a358-dfb8f5a93391",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "renderer",
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "implHandler": [
+                                    "\r",
+                                    "return Number(value.split('(')[1].split(')')[0])>0?Ext.Date.format(new Date(Number(value.split('(')[1].split(')')[0])),'Y-m-d H:i'):null;"
+                                ]
+                            },
+                            "designerId": "73c5ae64-2103-4f01-9246-46e81e1ea59d"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.plugin.RowEditing",
+                    "reference": {
+                        "name": "plugins",
+                        "type": "array"
+                    },
+                    "codeClass": "Ext.grid.plugin.RowEditing",
+                    "designerId": "3b95f5ba-7f3d-4ffa-9d1a-2b2160189895",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onRowEditingEdit",
+                                "implHandler": [
+                                    "\r",
+                                    "Ext.Ajax.request({     \r",
+                                    "    url:'/Manage/AdvUpdate',  \r",
+                                    "    params:context.record.data,  \r",
+                                    "    scope: this,\r",
+                                    "    success: function(resp,opts) {   \r",
+                                    "        var respText = Ext.JSON.decode(resp.responseText);  \r",
+                                    "        if(respText.success){\r",
+                                    "            Ext.Msg.alert('提示','成功');\r",
+                                    "            this.down('grid').getStore().load();\r",
+                                    "        }else{\r",
+                                    "            Ext.Msg.alert('提示','失败');\r",
+                                    "        }\r",
+                                    "\r",
+                                    "    },   \r",
+                                    "    failure: function(resp,opts) {   \r",
+                                    "        Ext.Msg.alert('提示','失败');\r",
+                                    "    }     \r",
+                                    "});"
+                                ],
+                                "name": "edit",
+                                "scope": "me"
+                            },
+                            "designerId": "d4f99723-3111-4e28-b03f-3de97fbff193"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

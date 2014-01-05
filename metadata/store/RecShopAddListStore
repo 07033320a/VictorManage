@@ -6,7 +6,9 @@
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "RecShopAddListStore"
+        "storeId": "RecShopAddListStore",
+        "designer|userClassName": "RecShopAddListStore",
+        "pageSize": 10
     },
     "designerId": "3c191be9-01c4-46d6-9f3a-4eb0c80551fb",
     "cn": [
@@ -17,6 +19,9 @@
                 "type": "object"
             },
             "codeClass": null,
+            "userConfig": {
+                "url": "/Manage/ShopList"
+            },
             "designerId": "bad0caaf-11ca-41e6-bd73-1c18a5a01327",
             "cn": [
                 {
@@ -26,6 +31,9 @@
                         "type": "object"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
                     "designerId": "f6b22f29-19c2-4a0e-b507-436840681c01"
                 }
             ]
@@ -38,9 +46,9 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "Text"
+                "name": "shopName"
             },
-            "designerId": "e2f692e9-843a-4788-941b-3475a85cf11a"
+            "designerId": "47153566-12e6-43ac-a9e5-ea6dc398a6a3"
         },
         {
             "type": "Ext.data.Field",
@@ -50,9 +58,9 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "Value"
+                "name": "shopId"
             },
-            "designerId": "c252e2b2-56a5-48b5-b868-47b79b1e3083"
+            "designerId": "63167721-fa9d-4f61-916c-145f68651501"
         }
     ]
 }

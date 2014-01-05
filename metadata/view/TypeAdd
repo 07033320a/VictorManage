@@ -1,0 +1,179 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "height": 232,
+        "width": 374,
+        "designer|userClassName": "TypeAdd",
+        "designer|userAlias": "typeadd",
+        "resizable": false,
+        "layout": "fit",
+        "title": "新增类型",
+        "modal": true
+    },
+    "configAlternates": {
+        "resizable": "boolean"
+    },
+    "designerId": "025f6ce7-0e06-4592-92c5-62c6f3e8e85c",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bodyPadding": 10,
+                "title": ""
+            },
+            "designerId": "b2cbae52-f508-4dc5-b30d-dfd896558957",
+            "cn": [
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "父类型",
+                        "name": "fatherId",
+                        "value": null,
+                        "allowBlank": false,
+                        "emptyText": "请选择",
+                        "editable": false,
+                        "displayField": "typeName",
+                        "hiddenName": "fatherId",
+                        "store": "TypeFatherStore",
+                        "valueField": "typeId"
+                    },
+                    "designerId": "a5e32926-259f-4e12-a3e3-be688df6d539"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "分类名称",
+                        "name": "typeName",
+                        "allowBlank": false,
+                        "emptyText": null
+                    },
+                    "designerId": "a4869b16-b960-48a3-88b8-63e6f925506a"
+                },
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "广告体",
+                        "name": "note",
+                        "enforceMaxLength": true,
+                        "maxLength": 300
+                    },
+                    "designerId": "ca4a7cff-0040-41d4-8b4b-97b2d6259fc8"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "icon": "data/img/save.gif",
+                        "scale": null,
+                        "text": "确认"
+                    },
+                    "designerId": "03b0a5dd-73d2-497a-ad01-c56490af987f",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onButtonClick",
+                                "implHandler": [
+                                    "var form = this.down('form').getForm();\r",
+                                    "var values = form.getValues();\r",
+                                    "var url = \"/Manage/TypeAdd\";\r",
+                                    "if(values.typeId != null){\r",
+                                    "\turl = \"/Manage/TypeUpdate\";\r",
+                                    "}\r",
+                                    "if(form.isValid()){\r",
+                                    "    form.submit({\r",
+                                    "        url:url,\r",
+                                    "        params: values,\r",
+                                    "        method:'POST',\r",
+                                    "        scope: this,\r",
+                                    "        success:function(f,action) {\r",
+                                    "            Ext.Msg.alert('提示:','成功');\r",
+                                    "            this.close();\r",
+                                    "            Ext.ComponentQuery.query('typemanagement grid')[0].getStore().load();\r",
+                                    "        },\r",
+                                    "        failure:function(f,action){\r",
+                                    "            Ext.Msg.alert(f,action);\r",
+                                    "        }\r",
+                                    "    });\r",
+                                    "}\r",
+                                    ""
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "designerId": "2525d8d8-1a0a-4a63-8912-b17999be4452"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "Label",
+                        "name": "typeId"
+                    },
+                    "designerId": "29b786e4-dc9b-49b1-9651-524cc7f3821a"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "Label",
+                        "name": "newOrUpdate",
+                        "value": [
+                            "1"
+                        ]
+                    },
+                    "designerId": "5aa076a5-3b8d-43b2-a4e4-796c0b9d7128"
+                }
+            ]
+        }
+    ]
+}

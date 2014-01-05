@@ -55,6 +55,12 @@ Ext.define('MyApp.model.UserListModel', {
         },
         {
             name: 'type'
+        },
+        {
+            name: 'birthday'
+        },
+        {
+            name: 'identification'
         }
     ]
 });

@@ -68,10 +68,10 @@ Ext.define('MyApp.store.PortalAdvStore', {
     },
 
     onJsonstoreLoad: function(store, records, successful, eOpts) {
-        if(successful && records.length == 14){
+        if(successful && records.length > 13){
             Ext.ComponentQuery.query('portaladv button[itemId=newBtn]')[0].setDisabled(true);
         }else{
-            Ext.ComponentQuery.query('portaladv button[itemId=newBtn]')[0].setDisabled(true);
+            Ext.ComponentQuery.query('portaladv button[itemId=newBtn]')[0].setDisabled(false);
         }
     }
 

@@ -1,0 +1,318 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "height": 300,
+        "width": 374,
+        "designer|userClassName": "AdvAdd",
+        "designer|userAlias": "advadd",
+        "resizable": false,
+        "layout": "fit",
+        "title": "新增广告",
+        "modal": true
+    },
+    "configAlternates": {
+        "resizable": "boolean"
+    },
+    "designerId": "023ada5d-89e5-405d-b561-846885b6f432",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bodyPadding": 10,
+                "title": ""
+            },
+            "designerId": "3703e65b-996f-402f-ab5d-f500ef2c542f",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "广告标题",
+                        "name": "advertisingTitle",
+                        "enforceMaxLength": true,
+                        "maxLength": 128
+                    },
+                    "designerId": "e93135a9-37da-401e-a814-9182869bb0e7"
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "类型",
+                        "name": "advType",
+                        "value": null,
+                        "allowBlank": false,
+                        "emptyText": "请选择",
+                        "editable": false,
+                        "displayField": "Name",
+                        "hiddenName": "advType",
+                        "store": null,
+                        "valueField": "Value"
+                    },
+                    "designerId": "8bd55801-fd43-4b3a-b4fd-48ec3f688f72",
+                    "cn": [
+                        {
+                            "type": "processcfgfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "processAdvType",
+                                "designer|params": [
+                                    "config"
+                                ],
+                                "implHandler": [
+                                    "var topNum = 0;\r",
+                                    "var midNum = 0;\r",
+                                    "var botNum = 0;\r",
+                                    "Ext.getStore('PortalAdvStore').each(function(item){\r",
+                                    "\r",
+                                    "    switch(item.get('advType')){\r",
+                                    "        case '1':\r",
+                                    "        topNum++;\r",
+                                    "        break;\r",
+                                    "        case '2':\r",
+                                    "        midNum++;\r",
+                                    "        break;\r",
+                                    "        case '3':\r",
+                                    "        botNum++;\r",
+                                    "        break;\r",
+                                    "        default:\r",
+                                    "        break;\r",
+                                    "\r",
+                                    "    }\r",
+                                    "},this)\r",
+                                    "\r",
+                                    "var arr = [];\r",
+                                    "if(topNum<6){\r",
+                                    "    arr.push({\"Name\":\"头部广告\",\"Value\":\"1\"});\r",
+                                    "}\r",
+                                    "if(midNum<2){\r",
+                                    "    arr.push({\"Name\":\"中部广告\",\"Value\":\"2\"});\r",
+                                    "}\r",
+                                    "if(botNum<6){\r",
+                                    "    arr.push({\"Name\":\"下部广告\",\"Value\":\"3\"});\r",
+                                    "}\r",
+                                    "\r",
+                                    "//arr = arr.sort(function(a,b){return Number(a.Value)-Number(b.Value)});\r",
+                                    "config.store = Ext.create('Ext.data.Store', {\r",
+                                    "    autoDestroy: true,\r",
+                                    "    fields: [\r",
+                                    "    {type: 'string', name: 'Name'},\r",
+                                    "    {type: 'string', name: 'Value'}\r",
+                                    "    ],\r",
+                                    "    data: arr\r",
+                                    "});\r",
+                                    "return config;"
+                                ]
+                            },
+                            "designerId": "883a8183-7c85-488b-aa2c-f7d20af708c5"
+                        },
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onComboboxChange",
+                                "implHandler": [
+                                    "if(newValue == '2' || newValue == '3'){\r",
+                                    "    this.down('[name=shopId]').setValue();\r",
+                                    "    this.down('[name=shopId]').setDisabled(true);\r",
+                                    "}else{\r",
+                                    "    this.down('[name=shopId]').setDisabled(false);\r",
+                                    "}"
+                                ],
+                                "name": "change",
+                                "scope": "me"
+                            },
+                            "designerId": "f0816ab7-d290-4602-bf0a-bec5daf48688"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "商铺",
+                        "name": "shopId",
+                        "emptyText": null,
+                        "editable": false,
+                        "displayField": "shopName",
+                        "hiddenName": "shopId",
+                        "store": "ShopListStore",
+                        "valueField": "shopId"
+                    },
+                    "designerId": "adb8aa6c-a2e1-40fa-8882-f270f1189ce3"
+                },
+                {
+                    "type": "Ext.form.field.Number",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "权值",
+                        "name": "power",
+                        "value": [
+                            "5"
+                        ],
+                        "enforceMaxLength": true,
+                        "maxLength": 1,
+                        "maxValue": 5,
+                        "minValue": 0
+                    },
+                    "designerId": "89e2f574-b60c-4df5-bf54-49596abcefe4"
+                },
+                {
+                    "type": "Ext.form.field.File",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "width": 338,
+                        "fieldLabel": "商铺详细页图片",
+                        "name": "pictureUrl",
+                        "buttonText": "浏览...",
+                        "clearOnSubmit": false
+                    },
+                    "designerId": "264d4942-84c8-48a1-a58d-1a5511753263"
+                },
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "广告体",
+                        "name": "content",
+                        "enforceMaxLength": true,
+                        "maxLength": 300
+                    },
+                    "designerId": "95adb66d-b2ef-48f2-aa7f-d9b1eb7e8640"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "icon": "data/img/save.gif",
+                        "scale": null,
+                        "text": "确认"
+                    },
+                    "designerId": "9757184e-5bb4-4a58-80fd-26773668bd27",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onButtonClick",
+                                "implHandler": [
+                                    "var form = this.down('form').getForm();\r",
+                                    "var values = form.getValues();\r",
+                                    "\r",
+                                    "var UserFilePath = this.down('form [name=pictureUrl]').getValue();\r",
+                                    "if(UserFilePath.length>0){\r",
+                                    "    if(!CheckFileExt(UserFilePath,/.jpg|.gif|.png|.bmp/i))\r",
+                                    "    {\r",
+                                    "        Ext.Msg.alert('错误','商铺详细页图片-您上传的文件不是图片类型，请重新选择！');\r",
+                                    "        return;\r",
+                                    "    }\r",
+                                    "}\r",
+                                    "UserFilePath = this.down('form [name=pictureUrl]').getValue();\r",
+                                    "if(form.isValid()){\r",
+                                    "    form.submit({\r",
+                                    "        url:\"/Home/AdvAdd\",\r",
+                                    "        params: values,\r",
+                                    "        method:'POST',\r",
+                                    "        scope: this,\r",
+                                    "        success:function(f,action) {\r",
+                                    "            Ext.Msg.alert('提示:','成功');\r",
+                                    "            this.close();\r",
+                                    "            Ext.ComponentQuery.query('portaladv grid')[0].getStore().load();\r",
+                                    "        },\r",
+                                    "        failure:function(f,action){\r",
+                                    "            Ext.Msg.alert(f,action);\r",
+                                    "        }\r",
+                                    "    });\r",
+                                    "}\r",
+                                    "//判断是否是图片类型\r",
+                                    "function CheckFileExt(extstr,exg)\r",
+                                    "{\r",
+                                    "    var extstr = extstr.substring(extstr.lastIndexOf(\".\")).toLowerCase();\r",
+                                    "    if (extstr.match(exg) == null) {\r",
+                                    "        return false;\r",
+                                    "    }\r",
+                                    "    return true;\r",
+                                    "}\r",
+                                    ""
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "designerId": "bf0f3cab-590f-4aba-9f3e-f320168114dd"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "margin": "0 0 0 20",
+                        "icon": "data/img/reset.gif",
+                        "scale": null,
+                        "text": "重置"
+                    },
+                    "designerId": "4a0f5f28-d4e1-484f-b7e7-5dd55af5f28f"
+                }
+            ]
+        }
+    ]
+}

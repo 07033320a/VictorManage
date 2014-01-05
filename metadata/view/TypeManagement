@@ -1,0 +1,371 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "height": 372,
+        "id": null,
+        "itemId": null,
+        "margin": null,
+        "width": 800,
+        "designer|userClassName": "TypeManagement",
+        "designer|userAlias": "typemanagement",
+        "layout": "border",
+        "title": "类型维护"
+    },
+    "designerId": "ff848346-ce14-49d3-b0d4-ffdeda4426d9",
+    "cn": [
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|region": "center",
+                "dock": null,
+                "id": null,
+                "itemId": null,
+                "title": null,
+                "store": "TypeStore"
+            },
+            "designerId": "40f782a1-1349-4b88-9b87-5ad69b21e8c2",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "top",
+                        "height": null
+                    },
+                    "designerId": "b3c22270-9baf-4b2a-8c08-9d90470044c5",
+                    "cn": [
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "itemId": "newBtn",
+                                "icon": "data/img/add1.png",
+                                "text": "新建"
+                            },
+                            "designerId": "c6042e79-3042-455d-b1de-7323a16427f9",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "handler",
+                                        "designer|params": [
+                                            "button",
+                                            "event"
+                                        ],
+                                        "implHandler": [
+                                            "Ext.create('MyApp.view.TypeAdd', { closable: true, title: '新建商铺类型' }).show();\r",
+                                            "\r",
+                                            ""
+                                        ]
+                                    },
+                                    "designerId": "7240d444-a3cf-4129-9d00-0b005fd0aef1"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "layout|margins": "0 10 0 10",
+                                "icon": "data/img/delete1.png",
+                                "text": "删除"
+                            },
+                            "designerId": "ac7e57dc-4866-461e-81d6-3ca2df5071af",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onButtonClick",
+                                        "implHandler": [
+                                            "var grid =  this.down('grid');\r",
+                                            "\r",
+                                            "var id = '';\r",
+                                            "if(grid.getSelectionModel().selected.length>0){\r",
+                                            "    grid.getSelectionModel().selected.each(function(item){\r",
+                                            "        id+= item.get('typeId');\r",
+                                            "    });\r",
+                                            "\r",
+                                            "    Ext.Ajax.request( {\r",
+                                            "        url : '/Manage/TypeDel',\r",
+                                            "        method : 'post',\r",
+                                            "        scope: this,\r",
+                                            "        params : {\r",
+                                            "            id : id\r",
+                                            "        },\r",
+                                            "        success : function(response, options) {\r",
+                                            "            this.down('grid').getStore().load();\r",
+                                            "        },\r",
+                                            "        failure : function() {\r",
+                                            "\r",
+                                            "        }\r",
+                                            "    });\r",
+                                            "\r",
+                                            "}else{\r",
+                                            "    Ext.Msg.alert('提示','请选择记录！');\r",
+                                            "}"
+                                        ],
+                                        "name": "click",
+                                        "scope": "me"
+                                    },
+                                    "designerId": "b63452d8-2f67-426b-bb9a-6256096e4798"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "id": null,
+                                "itemId": null,
+                                "margin": null,
+                                "icon": "data/img/zoom.gif",
+                                "text": "查询"
+                            },
+                            "designerId": "48fe886f-00c3-4dae-847c-853fcc4c367d",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onSearchBtnClick",
+                                        "implHandler": [
+                                            "Ext.getStore('TypeFatherStore').load();\r",
+                                            "var store = this.down('grid').getStore();\r",
+                                            "store.load({\r",
+                                            "    callback:function(r, option, success){\r",
+                                            "        if(success){\r",
+                                            "        }else{\r",
+                                            "            Ext.Msg.alert('错误',option.getError().statusText);\r",
+                                            "        }\r",
+                                            "\r",
+                                            "    }});"
+                                        ],
+                                        "name": "click",
+                                        "scope": "me"
+                                    },
+                                    "designerId": "79ad0505-c86e-46c4-89c1-eae1f378848f"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.View",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "da6c9f2e-28b6-498b-b269-ec61dc6a8fcb"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "typeId",
+                        "text": "类型ID"
+                    },
+                    "designerId": "b7624bb7-66ba-4daf-942c-4e0219f29f3c"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "width": 134,
+                        "dataIndex": "typeName",
+                        "text": "类型名称"
+                    },
+                    "designerId": "afc6e9ce-956b-425b-905b-f241a7b2e349"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "fatherId",
+                        "text": "父类型ID"
+                    },
+                    "designerId": "968e24fa-652e-4e18-85a5-bbbd4f37acad"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "fatherId",
+                        "text": "父类型名称"
+                    },
+                    "designerId": "01a354ef-f8a9-443a-8cff-cb3e3b92abdf",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "renderer",
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "implHandler": [
+                                    "var store = Ext.getStore('TypeFatherStore');\r",
+                                    "var result = store.find('typeId',value,0,false,true);\r",
+                                    "if(result!=-1){\r",
+                                    "\treturn store.getAt(result).data.typeName;\r",
+                                    "}else{\r",
+                                    "\treturn '';\r",
+                                    "}\r",
+                                    ""
+                                ]
+                            },
+                            "designerId": "1b81b74a-3b2b-43aa-bd4d-5dc534831e46"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "width": 190,
+                        "dataIndex": "note",
+                        "text": "备注"
+                    },
+                    "designerId": "17851fe6-d078-4508-98bc-5179e7a29377"
+                },
+                {
+                    "type": "Ext.grid.column.Action",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "width": 84
+                    },
+                    "designerId": "540eaa44-f620-4f1f-8ff1-fbba03a61444",
+                    "cn": [
+                        {
+                            "type": "actioncolumnitem",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "icon": "data/img/forward.png"
+                            },
+                            "designerId": "904e022b-265e-418a-a8b9-e44342bf2b42",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "handler",
+                                        "designer|params": [
+                                            "view",
+                                            "rowIndex",
+                                            "colIndex",
+                                            "item",
+                                            "e",
+                                            "record",
+                                            "row"
+                                        ],
+                                        "implHandler": [
+                                            "var datagridPanel;\r",
+                                            "datagridPanel = MyApp.getApplication().getController(\"TypeController\").getTypeadd();\r",
+                                            "if (!datagridPanel) {\r",
+                                            "    datagridPanel= Ext.create('MyApp.view.TypeAdd', { closable: true, title: '修改商铺类型' }).show();\r",
+                                            "    var form = datagridPanel.down('form').getForm();\r",
+                                            "    form.setValues(record.raw);\r",
+                                            "    if(record.raw.fatherId == 0){\r",
+                                            "    \tdatagridPanel.down('[name=fatherId]').setReadOnly(true);\r",
+                                            "    }else{\r",
+                                            "    \tdatagridPanel.down('[name=fatherId]').setReadOnly(false);\r",
+                                            "    }\r",
+                                            "}\r",
+                                            ""
+                                        ]
+                                    },
+                                    "designerId": "06941e69-dd30-499b-8396-1cd9140b5624"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
