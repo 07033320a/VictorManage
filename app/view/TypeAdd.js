@@ -100,7 +100,7 @@ Ext.define('MyApp.view.TypeAdd', {
         var form = this.down('form').getForm();
         var values = form.getValues();
         var url = "/Manage/TypeAdd";
-        if(values.typeId != null){
+        if(values.typeId != null && values.typeId != ""){
             url = "/Manage/TypeUpdate";
         }
         if(form.isValid()){
